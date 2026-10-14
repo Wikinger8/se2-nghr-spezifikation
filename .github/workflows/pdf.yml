@@ -1,0 +1,51 @@
+name: PDF bauen
+
+# Laeuft bei jedem Push und laesst sich zusaetzlich manuell starten.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Arial-kompatible Schrift installieren
+        # Arial gibt es auf Linux-Runnern nicht. Liberation Sans ist metrisch
+        # identisch, dadurch stimmen Zeilen- und Seitenumbrueche mit dem
+        # lokalen Build auf macOS ueberein.
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-liberation
+          fc-cache -f
+
+      - name: Typst einrichten
+        uses: typst-community/setup-typst@v4
+        with:
+          typst-version: '0.15.1'
+
+      - name: PDF kompilieren
+        run: typst compile main.typ main.pdf
+
+      - name: Vollstaendigkeit pruefen
+        # Bricht den Build ab, wenn Regeln oder Testbeispiele verloren gehen.
+        run: |
+          regeln=$(grep -rhoE 'R[0-9]+\.[0-9]+' chapters/ | sort -u | wc -l)
+          tests=$(grep -rhoE 'T[0-9]+[ab]? –' chapters/ | sort -u | wc -l)
+          echo "Regeln: $regeln (erwartet 71)"
+          echo "Testbeispiele: $tests (erwartet 20)"
+          if [ "$regeln" -ne 71 ] || [ "$tests" -ne 20 ]; then
+            echo "::error::Regel- oder Testanzahl abweichend. Erwartet 71 Regeln und 20 Testbeispiele."
+            exit 1
+          fi
+
+      - name: PDF als Artefakt hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: NGHR-Fachspezifikation
+          path: main.pdf
+          if-no-files-found: error

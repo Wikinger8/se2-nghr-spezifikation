@@ -1,0 +1,15 @@
+#let glossary = (
+  Mitarbeiter: "Ein Mitarbeiter ist eine Person, mit der die Sonnenschein AG einen Arbeitsvertrag geschlossen hat.",
+  Gehaltsklasse: "Die Gehaltsklasse ist ein im Arbeitsvertrag vereinbartes Merkmal eines Mitarbeiters, das festlegt, aus welchen Bruttopositionen sein Bruttogehalt besteht.",
+  Monatsgehalt: "Das Monatsgehalt ist der im Arbeitsvertrag vereinbarte monatliche Bruttobetrag eines Mitarbeiters.",
+  Gehaltsabrechnung: "Eine Gehaltsabrechnung ist eine Aufstellung der Gehaltspositionen eines Mitarbeiters für einen Abrechnungsmonat.",
+  Gehaltsposition: "Eine Gehaltsposition ist ein benannter Betrag.",
+  Bruttogehalt: "Das Bruttogehalt ist die Gehaltsposition, die die gesamte Vergütung des Mitarbeiters für den Abrechnungsmonat vor Abzügen ausweist.",
+  Nettogehalt: "Das Nettogehalt ist die Gehaltsposition, die die Vergütung des Mitarbeiters nach Steuern ausweist.",
+  Auszahlungsbetrag: "Der Auszahlungsbetrag ist die Gehaltsposition, die den Betrag ausweist, den der Mitarbeiter für den Abrechnungsmonat erhält.",
+  Gehaltslauf: "Ein Gehaltslauf ist eine Verarbeitung in NGHR, die angelegte Gehaltsabrechnungen eines Abrechnungsmonats erstellt.",
+  Zahltag: "Der Zahltag eines Abrechnungsmonats ist der Kalendertag, an dem die Auszahlungsbeträge seiner Gehaltsabrechnungen fällig sind.",
+  Lohnbuchung: "Eine Lohnbuchung ist ein Eintrag im Lohnbuch, der einen Betrag einer Gehaltsabrechnung ausweist.",
+  Steuermeldung: "Eine Steuermeldung ist eine elektronische Meldung an das Betriebsfinanzamt, die Bruttogehälter von Gehaltsabrechnungen je Mitarbeiter und Meldequartal übermittelt.",
+  Löschzeitpunkt: "Der Löschzeitpunkt ist der Tag, an dem NGHR alle Daten eines Mitarbeiters löscht.",
+)

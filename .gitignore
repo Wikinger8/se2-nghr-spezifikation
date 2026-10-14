@@ -1,0 +1,7 @@
+# Das PDF wird von der GitHub Action gebaut und als Artefakt bereitgestellt,
+# es gehoert nicht in die Versionierung.
+main.pdf
+*.pdf
+
+# macOS
+.DS_Store
