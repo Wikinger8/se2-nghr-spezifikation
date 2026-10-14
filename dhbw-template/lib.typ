@@ -166,9 +166,14 @@
 
   // save heading and body font families in variables
   // ANPASSUNG gegenueber supercharged-dhbw 3.5.0: Arial statt Open Sans /
-  // Montserrat. Liberation Sans steht als Fallback dahinter, weil Arial auf
-  // Linux-Buildrechnern (GitHub Actions) fehlt. Die beiden Schriften sind
-  // metrisch identisch, Zeilen- und Seitenumbrueche bleiben also gleich.
+  // Montserrat. Liberation Sans steht als Fallback dahinter, weil Arial als
+  // proprietaere Schrift auf Linux-Buildrechnern (GitHub Actions) fehlt.
+  //
+  // ACHTUNG: Die beiden Schriften erzeugen NICHT dieselbe Paginierung.
+  // Gemessen am 14.10.2026: 74 Seiten mit Arial (macOS), 72 Seiten mit
+  // Liberation Sans (GitHub Actions). Das lokal gebaute PDF und das Artefakt
+  // der Action sind also nicht seitengleich. Wer ein Dokument abgibt, sollte
+  // festlegen, welcher der beiden Builds die Abgabefassung ist.
   let body-font = ("Arial", "Liberation Sans")
   let heading-font = ("Arial", "Liberation Sans")
 
