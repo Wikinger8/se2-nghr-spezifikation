@@ -299,12 +299,9 @@
     })
   }
 
-  // signature
-  author-info-cells.push(text(
-    weight: "semibold",
-    TITLEPAGE_SIGNATURE.at(language) + [:]
-  ))
-  author-info-cells.push(align(bottom)[#line(length: 8em)])
+  // ANPASSUNG gegenueber supercharged-dhbw 3.5.0: Keine Unterschriftszeile auf
+  // dem Titelblatt. Das Dokument ist eine Fachspezifikation eines Teams und
+  // keine zu unterzeichnende Pruefungsleistung einer einzelnen Person.
 
   grid(
     columns: (auto, auto),
