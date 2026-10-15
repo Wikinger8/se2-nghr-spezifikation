@@ -31,9 +31,7 @@ Begriffe benennen die „Dinge“, auf die sich die Regeln beziehen. Die Definit
       [Vertriebsmitarbeiter], [Ein Vertriebsmitarbeiter ist ein Mitarbeiter mit der Gehaltsklasse „Gehalt und Provision“. _Erläuterung: NGHR kennt keine Organisationsdaten (PP). Die Zugehörigkeit zum Vertrieb ergibt sich deshalb aus der Gehaltsklasse._], [WW, PP (A)],
     ),
   )
-]
 
-#page(flipped: true)[
   == Provision und Bonus
 
   #figure(
@@ -52,9 +50,7 @@ Begriffe benennen die „Dinge“, auf die sich die Regeln beziehen. Die Definit
       [Bonus], [Der Bonus ist eine Bruttoposition, die einen Mitarbeiter am Geschäftsergebnis eines abgeschlossenen Kalenderjahres beteiligt.], [WW, RR],
     ),
   )
-]
 
-#page(flipped: true)[
   == Gehaltsabrechnung und ihre Positionen
 
   #figure(
@@ -83,9 +79,7 @@ Begriffe benennen die „Dinge“, auf die sich die Regeln beziehen. Die Definit
       [Gesamtlohnkosten], [Die Gesamtlohnkosten sind der Betrag, den die Sonnenschein AG für einen Mitarbeiter und einen Abrechnungsmonat insgesamt aufwendet. _Erläuterung: Bruttogehalt zuzüglich aller Arbeitgeberanteile (WW). Nur für den Forecast relevant → O22._], [WW, PP],
     ),
   )
-]
 
-#page(flipped: true)[
   == Steuern und Sozialversicherung
 
   #figure(
@@ -106,9 +100,7 @@ Begriffe benennen die „Dinge“, auf die sich die Regeln beziehen. Die Definit
       [Beitragspflichtiger Betrag], [Der beitragspflichtige Betrag ist der Teil des Bruttogehalts einer Gehaltsabrechnung, auf den für eine Versicherungsart Beiträge anfallen.], [WW (A)],
     ),
   )
-]
 
-#page(flipped: true)[
   == Abläufe, Termine, Systeme und Beteiligte
 
   #figure(
@@ -145,9 +137,7 @@ Begriffe benennen die „Dinge“, auf die sich die Regeln beziehen. Die Definit
       [Geschäftsführung], [Die Geschäftsführung ist das Leitungsorgan der Sonnenschein AG.], [WW, PP],
     ),
   )
-]
 
-#page(flipped: true)[
   == Fachliches Datenmodell
 
   Geschäftsobjekte mit Kernattributen (Identifizierer, Lebenszyklusstatus) und ihre Beziehungen (Bedeutung, Kardinalität, Richtung):

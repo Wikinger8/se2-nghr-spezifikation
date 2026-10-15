@@ -36,6 +36,11 @@
 // Lange Tabellen muessen ueber Seiten umbrechen duerfen.
 #show figure: set block(breakable: true)
 
+// Tabellenbeschriftungen stehen ueber der Tabelle. Das entspricht der ueblichen
+// Konvention fuer Tabellen und verhindert, dass die Beschriftung einer Tabelle,
+// die genau an der Seitengrenze endet, allein auf der Folgeseite landet.
+#show figure.where(kind: table): set figure.caption(position: top)
+
 // Die Quelle nummeriert die Kapitel ab 0 (0 Geltungsbereich ... 8 Annahmen) und
 // verweist im Text auf diese Nummern (z. B. "Kapitel 4", "(0.2)", "(1.5)").
 // Damit die automatische Nummerierung der Vorlage dieselben Nummern erzeugt,

@@ -207,9 +207,15 @@
     it
   }
 
+  // ANPASSUNG gegenueber supercharged-dhbw 3.5.0: Hauptkapitel beginnen nicht
+  // mehr auf einer neuen Seite, sondern nur mit deutlichem Abstand. Der
+  // erzwungene Umbruch hat reihenweise Seiten hinterlassen, die nur zu 10-40 %
+  // gefuellt waren. Die Verzeichnisse im Vorspann brechen weiterhin um; sie
+  // rufen pagebreak() unten selbst auf.
   show heading.where(level: 1): it => {
-    pagebreak()
-    v(2em) + it + v(1em)
+    v(3em, weak: true)
+    it
+    v(1em, weak: true)
   }
   show heading.where(level: 2): it => v(1em) + it + v(0.5em)
   show heading.where(level: 3): it => v(0.5em) + it + v(0.25em)
@@ -295,7 +301,19 @@
               if (show-header-chapter) {
                 align(left + bottom)[
                   #let headings = query(heading.where(level: 1))
-                  #if headings.len() > 0 and not headings.any(it => (it.location().page() == here().page())) {
+                  // ANPASSUNG gegenueber supercharged-dhbw 3.5.0: Frueher
+                  // genuegte es zu pruefen, ob auf dieser Seite irgendwo eine
+                  // Kapitelueberschrift liegt — Kapitel begannen ja immer oben
+                  // auf einer neuen Seite. Seit sie mitten auf der Seite
+                  // beginnen duerfen, nannte die Kopfzeile schon das neue
+                  // Kapitel, obwohl die halbe Seite noch zum alten gehoerte.
+                  // Jetzt zaehlt nur eine Ueberschrift im Kopfbereich der
+                  // Seite; sonst gilt das Kapitel, das oben noch laeuft.
+                  #let starts-at-top = headings.any(it => (
+                    it.location().page() == here().page()
+                      and it.location().position().y < 140pt
+                  ))
+                  #if headings.len() > 0 and not starts-at-top {
                     let elems = query(selector(heading.where(level: 1)).before(here()))
 
                     if (elems.len() > 0) {
@@ -422,14 +440,22 @@
     )
   }
 
-  show outline.entry.where(level: 1): it => {
-    v(18pt, weak: true)
-    strong(it)
+  // ANPASSUNG gegenueber supercharged-dhbw 3.5.0: Diese Regel stand frueher
+  // global hier und galt fuer alle Verzeichnisse. Sie ist jetzt eine Funktion,
+  // die jedes Verzeichnis unten selbst mit seinem Abstand setzt, damit das
+  // Inhaltsverzeichnis enger gesetzt werden kann als die uebrigen.
+  let outline-entry-style(gap, body) = {
+    show outline.entry.where(level: 1): it => {
+      v(gap, weak: true)
+      strong(it)
+    }
+    body
   }
 
   set par(justify: true, leading: 1em)
 
   if (show-abstract and abstract != none) {
+    pagebreak(weak: true)
     align(center + horizon, heading(level: 1, numbering: none, outlined: false)[Abstract])
     text(abstract)
   }
@@ -437,11 +463,21 @@
   set par(leading: 0.65em)
 
   if (show-table-of-contents) {
-    outline(
-      title: TABLE_OF_CONTENTS.at(language),
-      indent: auto,
-      depth: toc-depth,
-    )
+    pagebreak(weak: true)
+    // ANPASSUNG gegenueber supercharged-dhbw 3.5.0: Das Inhaltsverzeichnis
+    // laeuft bei 12pt Schrift und 18pt Kapitelabstand auf eine zweite Seite
+    // ueber. Mit 9pt und 12pt passt es auf eine Seite, und die Gruppierung
+    // nach Hauptkapiteln bleibt sichtbar. Beides gilt nur fuer dieses eine
+    // Verzeichnis: Ueberschrift, Fliesstext und die uebrigen Verzeichnisse
+    // (z. B. Tabellenverzeichnis) bleiben unveraendert.
+    outline-entry-style(12pt, {
+      show outline.entry: set text(size: 9pt)
+      outline(
+        title: TABLE_OF_CONTENTS.at(language),
+        indent: auto,
+        depth: toc-depth,
+      )
+    })
   }
 
   context {
@@ -449,10 +485,11 @@
     let count = elems.len()
 
     if (show-list-of-figures and count > 0) {
-      outline(
+      pagebreak(weak: true)
+      outline-entry-style(18pt, outline(
         title: LIST_OF_FIGURES.at(language),
         target: figure.where(kind: image),
-      )
+      ))
     }
   }
 
@@ -461,10 +498,11 @@
     let count = elems.len()
 
     if (show-list-of-tables and count > 0) {
-      outline(
+      pagebreak(weak: true)
+      outline-entry-style(18pt, outline(
         title: LIST_OF_TABLES.at(language),
         target: figure.where(kind: table),
-      )
+      ))
     }
   }
 
@@ -473,18 +511,21 @@
     let count = elems.len()
 
     if (show-code-snippets and count > 0) {
-      outline(
+      pagebreak(weak: true)
+      outline-entry-style(18pt, outline(
         title: CODE_SNIPPETS.at(language),
         target: figure.where(kind: raw),
-      )
+      ))
     }
   }
 
   if (show-acronyms and acronyms != none and acronyms.len() > 0) {
+    pagebreak(weak: true)
     print-acronyms(language, acronym-spacing)
   }
 
   if (glossary != none and glossary.len() > 0) {
+    pagebreak(weak: true)
     print-glossary(language, glossary-spacing)
   }
 
@@ -518,6 +559,13 @@
     },
   )
   counter(page).update(1)
+
+  // ANPASSUNG gegenueber supercharged-dhbw 3.5.0: Frueher sorgte der
+  // Seitenumbruch der Kapitelueberschrift dafuer, dass der Hauptteil auf einer
+  // frischen Seite begann. Da Kapitel nicht mehr umbrechen, wird der Umbruch
+  // hier einmal explizit gesetzt — sonst startet die Seitenzaehlung des
+  // Hauptteils mitten auf der letzten Vorspannseite.
+  pagebreak(weak: true)
 
   body
 

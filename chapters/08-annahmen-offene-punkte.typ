@@ -33,9 +33,7 @@ Das Fallbeispiel lässt einige Fragen offen. Statt die Lücken stillschweigend m
       [A20], [Löschung ohne Sterbedatum], [Ist kein Sterbedatum erfasst, tritt der Löschzeitpunkt nicht ein. Begründung: wörtliche Lesart von II („zu dem späteren Zeitpunkt von“); ein Zeitpunkt, der nicht eingetreten ist, kann nicht der frühere sein → O2.], [Löschung zehn Jahre nach der letzten Gehaltszahlung, solange kein Sterbedatum erfasst ist],
     ),
   )
-]
 
-#page(flipped: true)[
   == Offene Punkte
 
   #figure(
