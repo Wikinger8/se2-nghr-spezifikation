@@ -3,11 +3,11 @@
 // Kapitelzaehler nicht hoch (siehe Kommentar in main.typ).
 #heading(numbering: none)[Geltungsbereich und Konventionen]
 
-*Geltungsbereich:* Gehaltsabrechnungen für Mitarbeiter mit Arbeitsvertrag in Deutschland in allen drei Gehaltsklassen (Roadmap Release 2 und 3, SK F6), vom Anlegen bis zur Löschung.
+*Geltungsbereich:* Gehaltsabrechnungen für Inlandsmitarbeiter (R3.0) in allen drei Gehaltsklassen, vom Anlegen bis zur Löschung.
 
 *Nicht Gegenstand:*
 
-- Gehaltsabrechnungen in anderen Ländern (spätere Releases, SCH)
+- Gehaltsabrechnungen für Mitarbeiter ohne Arbeitsvertrag in Deutschland; NGHR legt für sie keine Gehaltsabrechnung an (R3.0, SCH)
 - Gehaltsabrechnungen aus der Zeit vor NGHR, die in PZ verbleiben (SCH)
 - Pflege von Mitarbeiterdaten, Mitarbeiterstatus, Gehaltsdaten und Kostenstellen-Zuordnung; die Regeln verwenden diese Daten nur, die vorausgesetzten Eigenschaften stehen in Abschnitt 3.4 (HH, WW, PP)
 - Lohnkostenplan und Forecast, da sie auf Gehaltsdaten beruhen (PP)
@@ -26,7 +26,7 @@
     [RR], [Reich], [II], [Intim],
     [BB], [Baumeister], [PP], [Pinke],
     [WW], [Wuchtig], [HH], [Helfer],
-    [KK], [Kohle], [SK], [Vorlesungsskript (F = Folie)],
+    [KK], [Kohle], [SK], [Vorlesungsskript (F = Folie); nur methodische Quelle, nie Quelle einer Regel oder eines Begriffs],
   ),
 )
 

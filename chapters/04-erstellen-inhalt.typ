@@ -4,9 +4,12 @@ NGHR bildet das Bruttogehalt, zieht die Steuern ab (Nettogehalt), zieht die voll
 
 == Bruttopositionen und Bruttogehalt
 
-*R4.1* Jede erstellte Gehaltsabrechnung enthält die Bruttoposition „Gehalt“. [WW]
+*R4.0* Die Bruttopositionen einer Gehaltsabrechnung sind Grundgehalt, Provision und Bonus. [WW, RR] \
+_Erläuterung: Welche dieser Bruttopositionen eine erstellte Gehaltsabrechnung enthält, legen R4.1, R4.3 und R4.7 fest._
 
-*R4.2* Das Gehalt beträgt Monatsgehalt × Anzahl der aktiven Tage im Abrechnungsmonat ÷ Anzahl der Kalendertage des Abrechnungsmonats. [WW, LL → A1]
+*R4.1* Jede erstellte Gehaltsabrechnung enthält die Bruttoposition „Grundgehalt“. [WW]
+
+*R4.2* Das Grundgehalt beträgt Monatsgehalt × Anzahl der aktiven Tage im Abrechnungsmonat ÷ Anzahl der Kalendertage des Abrechnungsmonats. [WW, LL → A1]
 
 *R4.3* Eine erstellte Gehaltsabrechnung enthält die Bruttoposition „Provision“ genau dann, wenn ihre Gehaltsklasse „Gehalt und Provision“ ist. [WW]
 
@@ -17,7 +20,7 @@ _Erläuterung: Für März: 16.02. bis 15.03. Ein Kundenvertrag vom 15.02. zählt
 
 *R4.6* NGHR kürzt die Provision nicht nach aktiven Tagen. [→ A1]
 
-*R4.7* Eine erstellte Gehaltsabrechnung enthält die Bruttoposition „Bonus“ genau dann, wenn ihre Gehaltsklasse „Gehalt und Bonus“ und ihr Abrechnungsmonat ein Mai ist. [WW]
+*R4.7* Eine erstellte Gehaltsabrechnung enthält die Bruttoposition „Bonus“ genau dann, wenn ihre Gehaltsklasse „Gehalt und Bonus“ und ihr Abrechnungsmonat ein Mai ist. [WW → O20]
 
 *R4.8* Der Bonus beträgt Bonussatz des Vorjahres × Monatsgehalt der Gehaltsabrechnung. [WW → A6, O5]
 
@@ -25,11 +28,13 @@ _Erläuterung: Für März: 16.02. bis 15.03. Ein Kundenvertrag vom 15.02. zählt
 
 *R4.10* Der Bonussatz eines Bonusjahres gilt für alle Mitarbeiter der Gehaltsklasse „Gehalt und Bonus“. [WW, RR]
 
-*R4.11* Anwender mit der Rolle Lohnbuchhaltung erfassen den Bonussatz einmal im Jahr in NGHR. [RR]
+*R4.11* Anwender mit der Rolle Lohnbuchhaltung erfassen den Bonussatz einmal im Jahr in NGHR. [RR → A20]
 
 *R4.12* Das Bruttogehalt ist die Summe aller Bruttopositionen der Gehaltsabrechnung. [WW, RR]
 
 == Steuerpositionen und Nettogehalt
+
+*R4.12a* Die Steuerarten sind die Einkommensteuer (ESt) und der Solidaritätszuschlag (Soli). [KK]
 
 *R4.13* Die kumulierte ESt einer Gehaltsabrechnung beträgt 25 % des Betrags, um den ihr kumuliertes Bruttogehalt den Grundfreibetrag von 16.000 € übersteigt, mindestens 0 €. [KK → A7]
 
@@ -42,6 +47,8 @@ _Erläuterung: Für März: 16.02. bis 15.03. Ein Kundenvertrag vom 15.02. zählt
 *R4.17* Das Nettogehalt ist das Bruttogehalt abzüglich Einkommensteuer und Solidaritätszuschlag. [WW]
 
 == SV-Beiträge, Arbeitgeberanteile und Auszahlungsbetrag
+
+*R4.17a* Die Versicherungsarten sind die Krankenversicherung (KV), die Pflegeversicherung (PV), die Arbeitslosenversicherung (AV) und die Rentenversicherung (RV). [WW]
 
 Für die Versicherungsarten gelten folgende Beitragssätze und BBM: [WW]
 
@@ -64,7 +71,7 @@ Für die Versicherungsarten gelten folgende Beitragssätze und BBM: [WW]
 
 *R4.21* Der Auszahlungsbetrag ist das Nettogehalt abzüglich aller SV-Beiträge zuzüglich aller Arbeitgeberanteile. [WW]
 
-*R4.22* Eine erstellte Gehaltsabrechnung enthält ihre Gehaltspositionen in dieser Reihenfolge: Gehalt, Provision, Bonus (soweit vorhanden) · Bruttogehalt · Einkommensteuer, Solidaritätszuschlag · Nettogehalt · SV-Beiträge KV, PV, AV, RV · Arbeitgeberanteile KV, PV, AV, RV · Auszahlungsbetrag. [WW]
+*R4.22* Eine erstellte Gehaltsabrechnung enthält ihre Gehaltspositionen in dieser Reihenfolge: Grundgehalt, Provision, Bonus (soweit vorhanden) · Bruttogehalt · Einkommensteuer, Solidaritätszuschlag · Nettogehalt · SV-Beiträge KV, PV, AV, RV · Arbeitgeberanteile KV, PV, AV, RV · Auszahlungsbetrag. [WW → A21]
 
 === Zusammengefasst (nicht normativ)
 

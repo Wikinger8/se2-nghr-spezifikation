@@ -25,7 +25,7 @@ _Erläuterung: Ehemalige Mitarbeiter sehen ihre Gehaltsabrechnungen daher nicht 
 *R6.7* Der Löschzeitpunkt eines Mitarbeiters ist der spätere der beiden Tage
 
 + fünf Jahre nach seinem Sterbedatum,
-+ zehn Jahre nach dem Tag der letzten Überweisung eines Auszahlungsbetrags an ihn. [II → A12, O16]
++ zehn Jahre nach dem Tag der letzten Überweisung eines Auszahlungsbetrags an ihn. [II → A12, O16, O21]
 
 *R6.8* Am Löschzeitpunkt eines Mitarbeiters löscht NGHR alle seine Gehaltsabrechnungen unabhängig von ihrem Zustand zusammen mit allen anderen Daten dieses Mitarbeiters. [II]
 
