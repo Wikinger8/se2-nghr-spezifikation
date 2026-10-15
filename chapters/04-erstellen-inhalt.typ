@@ -16,7 +16,7 @@ _Erläuterung: Welche dieser Bruttopositionen eine erstellte Gehaltsabrechnung e
 *R4.4* Der Provisionszeitraum eines Abrechnungsmonats beginnt am 16. des Vormonats und endet einschließlich am 15. des Abrechnungsmonats. [WW → A5] \
 _Erläuterung: Für März: 16.02. bis 15.03. Ein Kundenvertrag vom 15.02. zählt für Februar, einer vom 16.03. für April._
 
-*R4.5* Die Provision beträgt 3 % der Summe der Vertragsvolumen aller Kundenverträge des Vertriebsmitarbeiters, deren Abschlussdatum im Provisionszeitraum liegt; ohne solche Kundenverträge beträgt sie 0 €. [WW]
+*R4.5* Die Provision beträgt 3 % der Summe der Vertragsvolumen aller Kundenverträge des Mitarbeiters der Gehaltsabrechnung, deren Abschlussdatum im Provisionszeitraum liegt; ohne solche Kundenverträge beträgt sie 0 €. [WW]
 
 *R4.6* NGHR kürzt die Provision nicht nach aktiven Tagen. [→ A1]
 

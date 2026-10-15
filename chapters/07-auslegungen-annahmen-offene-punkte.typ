@@ -36,6 +36,7 @@ Die Spezifikation enthält nur, was das Fallbeispiel nennt. Auslegungen legen fe
     [A19], [Annahme], [Lohnbuchungen zu Steuerpositionen haben als Buchungsdatum den Tag des Gehaltslaufs und entstehen nur für Steuerpositionen über 0 € (R5.1). Grundlage: KK „mit jeder Erstellung einer Gehaltsabrechnung“. Mit der Buchhaltung zu bestätigen.], [R5.1],
     [A20], [Auslegung], [Anwender mit der Rolle Lohnbuchhaltung erfassen den Bonussatz (R4.11). Grundlage: RR, Leiter Lohnbuchhaltung, „dass man den Bonus nur einmal im Jahr für alle Manager im System eingeben muss“.], [R4.11],
     [A21], [Auslegung], [Die Reihenfolge der Gehaltspositionen folgt dem Rechenweg bei WW (R4.22).], [R4.22],
+    [A22], [Annahme], [Die Erfassung eines Mitarbeiters in NGHR, dessen Arbeitsvertrag vor der Einführung von NGHR geschlossen wurde, ist eine Einstellung im Sinne von R3.1. Grundlage: SCH führt zuerst die Mitarbeiterstammdaten ein und lässt alte Gehaltsabrechnungen in PZ; wie bestehende Mitarbeiter in NGHR erfasst werden, nennt das Fallbeispiel nicht. Mit der Personalvorständin zu bestätigen.], [R3.1],
   ),
 )
 

@@ -80,14 +80,14 @@ Begriffe benennen die „Dinge“, auf die sich die Regeln beziehen. Alles, was 
   [Grundgehalt], [Das Grundgehalt ist die Bruttoposition, die den auf den Abrechnungsmonat entfallenden Teil des Monatsgehalts ausweist. \ _Erläuterung: Nicht zu verwechseln mit der Gehaltsklasse „Gehalt“._], [WW],
   [Provision], [Die Provision ist die Bruttoposition, die einen Vertriebsmitarbeiter am Vertragsvolumen seiner Kundenverträge beteiligt.], [WW],
   [Bonus], [Der Bonus ist die Bruttoposition, die die jährliche Zahlung an einen Mitarbeiter der Gehaltsklasse „Gehalt und Bonus“ ausweist.], [WW, RR],
-  [Bruttogehalt], [Das Bruttogehalt ist die Gehaltsposition mit der gesamten Vergütung für den Abrechnungsmonat vor Abzügen.], [WW],
+  [Bruttogehalt], [Das Bruttogehalt ist die Gehaltsposition mit der gesamten Vergütung einer Gehaltsabrechnung vor Abzügen.], [WW],
   [Steuerart], [Eine Steuerart ist eine Abgabe an das Betriebsfinanzamt, die vom Bruttogehalt abgezogen wird. \ _Erläuterung: Welche Steuerarten es gibt, legt R4.12a fest._], [KK],
   [Steuerposition], [Eine Steuerposition ist eine Gehaltsposition, die den Betrag einer Steuerart ausweist.], [WW, KK],
   [Nettogehalt], [Das Nettogehalt ist die Gehaltsposition mit der Vergütung nach Abzug der Steuerpositionen.], [WW],
   [Versicherungsart], [Eine Versicherungsart ist eine Sozialversicherung, zu der vom Bruttogehalt einer Gehaltsabrechnung ein Beitrag zu zahlen ist. \ _Erläuterung: Welche Versicherungsarten es gibt, legt R4.17a fest._], [WW],
   [SV-Beitrag], [Ein SV-Beitrag ist eine Gehaltsposition mit dem gesamten Beitrag zu einer Versicherungsart.], [WW],
   [Arbeitgeberanteil], [Ein Arbeitgeberanteil ist eine Gehaltsposition mit dem Teil eines SV-Beitrags, den die Sonnenschein AG trägt.], [WW],
-  [Auszahlungsbetrag], [Der Auszahlungsbetrag ist die Gehaltsposition mit dem Betrag, den der Mitarbeiter für den Abrechnungsmonat erhält.], [WW],
+  [Auszahlungsbetrag], [Der Auszahlungsbetrag ist die Gehaltsposition mit dem Betrag, den der Mitarbeiter mit einer Gehaltsabrechnung erhält.], [WW],
 )
 
 == Jahreswerte für Steuer und Sozialversicherung
@@ -108,14 +108,14 @@ Begriffe benennen die „Dinge“, auf die sich die Regeln beziehen. Alles, was 
 
 #begriffe(
   "Abläufe und Termine",
-  [Einführungsmonat], [Der Einführungsmonat einer Gehaltsklasse ist der erste Abrechnungsmonat, für den NGHR Gehaltsabrechnungen von Mitarbeitern dieser Gehaltsklasse erstellt.], [SCH → A14],
-  [Gehaltslauf], [Ein Gehaltslauf ist eine Verarbeitung in NGHR, die angelegte Gehaltsabrechnungen eines Abrechnungsmonats erstellt oder als entfallen kennzeichnet.], [RR],
+  [Einführungsmonat], [Der Einführungsmonat einer Gehaltsklasse ist der erste Abrechnungsmonat, für den die Gehaltsabrechnungen der Mitarbeiter dieser Gehaltsklasse in NGHR statt in PZ geführt werden.], [SCH → A14],
+  [Gehaltslauf], [Ein Gehaltslauf ist eine Verarbeitung in NGHR, die angelegte Gehaltsabrechnungen eines Abrechnungsmonats erstellt oder als entfallen kennzeichnet. Der Gehaltslauf einer Gehaltsabrechnung ist der Gehaltslauf ihres Abrechnungsmonats.], [RR],
   [Wochentag], [Ein Wochentag ist ein Kalendertag von Montag bis Freitag.], [WW → A9],
   [Zahltag], [Der Zahltag ist der Kalendertag, an dem die Auszahlungsbeträge der Gehaltsabrechnungen eines Abrechnungsmonats fällig sind.], [WW, BB],
   [Überweisung], [Eine Überweisung ist eine Zahlung vom Konto der Sonnenschein AG bei der Hausbank an einen Empfänger.], [KK, BB],
   [Zahlungsabfluss], [Ein Zahlungsabfluss ist eine Überweisung, die NGHR für eine Gehaltsabrechnung auslöst.], [KK, PP],
   [Lohnbuch], [Das Lohnbuch ist das Buch im ERP-System, in dem die Buchhaltung Zahlungsabflüsse und Steuern je Mitarbeiter verbucht.], [KK],
-  [Lohnbuchung], [Eine Lohnbuchung ist ein Eintrag im Lohnbuch zu einem Zahlungsabfluss oder zu einer Steuerposition.], [KK, PP],
+  [Lohnbuchung], [Eine Lohnbuchung ist ein Datensatz zu einem Zahlungsabfluss oder zu einer Steuerposition, den NGHR dem ERP-System zur Verbuchung im Lohnbuch meldet.], [KK, PP],
   [Meldequartal], [Das Meldequartal einer Gehaltsabrechnung ist das Kalenderquartal, in dem ihr Abrechnungsmonat liegt.], [KK],
   [Quartalsbruttoeinkommen], [Das Quartalsbruttoeinkommen ist die Summe der Bruttogehälter der Gehaltsabrechnungen eines Mitarbeiters mit demselben Meldequartal, die eine Steuermeldung berücksichtigt. \ _Erläuterung: Bei KK „Bruttoeinkommen“._], [KK],
   [Steuermeldung], [Eine Steuermeldung ist eine elektronische Meldung per Elster an das Betriebsfinanzamt, die Quartalsbruttoeinkommen je Mitarbeiter übermittelt.], [KK],

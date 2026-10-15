@@ -78,14 +78,14 @@ Begriffe benennen die „Dinge“, auf die sich die Regeln beziehen. Alles, was 
 | Grundgehalt | Das Grundgehalt ist die Bruttoposition, die den auf den Abrechnungsmonat entfallenden Teil des Monatsgehalts ausweist.<br>_Erläuterung: Nicht zu verwechseln mit der Gehaltsklasse „Gehalt“._ | WW |
 | Provision | Die Provision ist die Bruttoposition, die einen Vertriebsmitarbeiter am Vertragsvolumen seiner Kundenverträge beteiligt. | WW |
 | Bonus | Der Bonus ist die Bruttoposition, die die jährliche Zahlung an einen Mitarbeiter der Gehaltsklasse „Gehalt und Bonus“ ausweist. | WW, RR |
-| Bruttogehalt | Das Bruttogehalt ist die Gehaltsposition mit der gesamten Vergütung für den Abrechnungsmonat vor Abzügen. | WW |
+| Bruttogehalt | Das Bruttogehalt ist die Gehaltsposition mit der gesamten Vergütung einer Gehaltsabrechnung vor Abzügen. | WW |
 | Steuerart | Eine Steuerart ist eine Abgabe an das Betriebsfinanzamt, die vom Bruttogehalt abgezogen wird.<br>_Erläuterung: Welche Steuerarten es gibt, legt R4.12a fest._ | KK |
 | Steuerposition | Eine Steuerposition ist eine Gehaltsposition, die den Betrag einer Steuerart ausweist. | WW, KK |
 | Nettogehalt | Das Nettogehalt ist die Gehaltsposition mit der Vergütung nach Abzug der Steuerpositionen. | WW |
 | Versicherungsart | Eine Versicherungsart ist eine Sozialversicherung, zu der vom Bruttogehalt einer Gehaltsabrechnung ein Beitrag zu zahlen ist.<br>_Erläuterung: Welche Versicherungsarten es gibt, legt R4.17a fest._ | WW |
 | SV-Beitrag | Ein SV-Beitrag ist eine Gehaltsposition mit dem gesamten Beitrag zu einer Versicherungsart. | WW |
 | Arbeitgeberanteil | Ein Arbeitgeberanteil ist eine Gehaltsposition mit dem Teil eines SV-Beitrags, den die Sonnenschein AG trägt. | WW |
-| Auszahlungsbetrag | Der Auszahlungsbetrag ist die Gehaltsposition mit dem Betrag, den der Mitarbeiter für den Abrechnungsmonat erhält. | WW |
+| Auszahlungsbetrag | Der Auszahlungsbetrag ist die Gehaltsposition mit dem Betrag, den der Mitarbeiter mit einer Gehaltsabrechnung erhält. | WW |
 | **Jahreswerte für Steuer und Sozialversicherung** | | |
 | Frühere Gehaltsabrechnung | Eine frühere Gehaltsabrechnung ist eine erstellte Gehaltsabrechnung desselben Mitarbeiters mit früherem Abrechnungsmonat im selben Kalenderjahr.<br>_Erläuterung: Angelegte und entfallene Gehaltsabrechnungen gehen damit in keine Summe ein._ | KK, WW |
 | Kumuliertes Bruttogehalt | Das kumulierte Bruttogehalt ist die Summe der Bruttogehälter einer Gehaltsabrechnung und aller ihrer früheren Gehaltsabrechnungen. | KK, WW |
@@ -96,14 +96,14 @@ Begriffe benennen die „Dinge“, auf die sich die Regeln beziehen. Alles, was 
 | Beitragsbemessungsgrenze (BBM) | Die BBM ist das Jahresbruttogehalt, bis zu dem für eine Versicherungsart Beiträge anfallen. | WW |
 | Beitragspflichtiger Betrag | Der beitragspflichtige Betrag ist der Teil des Bruttogehalts einer Gehaltsabrechnung, auf den für eine Versicherungsart Beiträge anfallen. | WW |
 | **Abläufe und Termine** | | |
-| Einführungsmonat | Der Einführungsmonat einer Gehaltsklasse ist der erste Abrechnungsmonat, für den NGHR Gehaltsabrechnungen von Mitarbeitern dieser Gehaltsklasse erstellt. | SCH → A14 |
-| Gehaltslauf | Ein Gehaltslauf ist eine Verarbeitung in NGHR, die angelegte Gehaltsabrechnungen eines Abrechnungsmonats erstellt oder als entfallen kennzeichnet. | RR |
+| Einführungsmonat | Der Einführungsmonat einer Gehaltsklasse ist der erste Abrechnungsmonat, für den die Gehaltsabrechnungen der Mitarbeiter dieser Gehaltsklasse in NGHR statt in PZ geführt werden. | SCH → A14 |
+| Gehaltslauf | Ein Gehaltslauf ist eine Verarbeitung in NGHR, die angelegte Gehaltsabrechnungen eines Abrechnungsmonats erstellt oder als entfallen kennzeichnet. Der Gehaltslauf einer Gehaltsabrechnung ist der Gehaltslauf ihres Abrechnungsmonats. | RR |
 | Wochentag | Ein Wochentag ist ein Kalendertag von Montag bis Freitag. | WW → A9 |
 | Zahltag | Der Zahltag ist der Kalendertag, an dem die Auszahlungsbeträge der Gehaltsabrechnungen eines Abrechnungsmonats fällig sind. | WW, BB |
 | Überweisung | Eine Überweisung ist eine Zahlung vom Konto der Sonnenschein AG bei der Hausbank an einen Empfänger. | KK, BB |
 | Zahlungsabfluss | Ein Zahlungsabfluss ist eine Überweisung, die NGHR für eine Gehaltsabrechnung auslöst. | KK, PP |
 | Lohnbuch | Das Lohnbuch ist das Buch im ERP-System, in dem die Buchhaltung Zahlungsabflüsse und Steuern je Mitarbeiter verbucht. | KK |
-| Lohnbuchung | Eine Lohnbuchung ist ein Eintrag im Lohnbuch zu einem Zahlungsabfluss oder zu einer Steuerposition. | KK, PP |
+| Lohnbuchung | Eine Lohnbuchung ist ein Datensatz zu einem Zahlungsabfluss oder zu einer Steuerposition, den NGHR dem ERP-System zur Verbuchung im Lohnbuch meldet. | KK, PP |
 | Meldequartal | Das Meldequartal einer Gehaltsabrechnung ist das Kalenderquartal, in dem ihr Abrechnungsmonat liegt. | KK |
 | Quartalsbruttoeinkommen | Das Quartalsbruttoeinkommen ist die Summe der Bruttogehälter der Gehaltsabrechnungen eines Mitarbeiters mit demselben Meldequartal, die eine Steuermeldung berücksichtigt.<br>_Erläuterung: Bei KK „Bruttoeinkommen“._ | KK |
 | Steuermeldung | Eine Steuermeldung ist eine elektronische Meldung per Elster an das Betriebsfinanzamt, die Quartalsbruttoeinkommen je Mitarbeiter übermittelt. | KK |
@@ -133,7 +133,7 @@ Eine Gehaltsabrechnung befindet sich zu jedem Zeitpunkt in genau einem Zustand. 
 | Erstellt | Alle Gehaltspositionen sind berechnet; der Inhalt ist endgültig. | R3.10, R3.11, R3.13 |
 | – Zahlungsstatus | „offen“: Die Überweisungen nach R5.3 und R5.4 sind noch nicht ausgelöst. „ausgezahlt“: Sie sind ausgelöst. | R5.7 |
 | – Meldestatus | „ungemeldet“: Das Bruttogehalt ist in keiner Steuermeldung berücksichtigt. „gemeldet“: Es ist in einer Steuermeldung berücksichtigt. | R5.13, R5.15 |
-| Entfallen | Der Mitarbeiter hat im Abrechnungsmonat keinen aktiven Tag. Die Gehaltsabrechnung bleibt ohne Gehaltspositionen; NGHR zahlt und meldet nichts. | R3.12 |
+| Entfallen | Der Mitarbeiter hat im Abrechnungsmonat keinen aktiven Tag. Die Gehaltsabrechnung bleibt ohne Gehaltspositionen; NGHR zahlt nichts. Ob der Mitarbeiter in der Steuermeldung erscheint, ist offen (O22). | R3.12 |
 | Gelöscht | Die Gehaltsabrechnung ist mit allen Daten des Mitarbeiters gelöscht (Endzustand). | R6.8, R6.9 |
 
 ### Zustandsübergänge
@@ -141,9 +141,9 @@ Eine Gehaltsabrechnung befindet sich zu jedem Zeitpunkt in genau einem Zustand. 
 | Ereignis | Zustand alt | Zustand neu | Aktion | Regeln |
 |---|---|---|---|---|
 | Einstellung des Inlandsmitarbeiters | – | Angelegt (späterer Abrechnungsmonat aus Vertragsbeginn und Einführungsmonat seiner Gehaltsklasse) | – | R3.0, R3.1 |
-| Zeitpunkt nach R3.2 (spätestens Zahltag des Vormonats) | – | Angelegt (dieser spätere Abrechnungsmonat) | – | R3.2 |
-| Gehaltslauf; Mitarbeiter hat mindestens einen aktiven Tag | Angelegt | Erstellt (offen, ungemeldet) | Lohnbuchungen zu den Steuerpositionen | R3.10, R3.11, R5.1 |
-| Gehaltslauf; Mitarbeiter hat keinen aktiven Tag | Angelegt | Entfallen | – | R3.12 |
+| Zeitpunkt nach R3.2 (spätestens Zahltag des Vormonats) | – | Angelegt (jeder Folgemonat nach R3.2) | – | R3.2 |
+| Gehaltslauf ihres Abrechnungsmonats; Mitarbeiter hat mindestens einen aktiven Tag | Angelegt | Erstellt (offen, ungemeldet) | Lohnbuchungen zu den Steuerpositionen | R3.10, R3.11, R5.1 |
+| Gehaltslauf ihres Abrechnungsmonats; Mitarbeiter hat keinen aktiven Tag | Angelegt | Entfallen | – | R3.12 |
 | Zahltag: Überweisungen ausgelöst | Erstellt / offen | Erstellt / ausgezahlt | Lohnbuchungen zu den Zahlungsabflüssen | R5.3–R5.7, R5.8 |
 | Steuermeldung gesendet | Erstellt / ungemeldet | Erstellt / gemeldet | – | R5.15 |
 | Löschzeitpunkt des Mitarbeiters erreicht | Angelegt, Erstellt, Entfallen | Gelöscht | Löschung aller Daten des Mitarbeiters | R6.8, R6.9 |
@@ -154,11 +154,11 @@ Eine Gehaltsabrechnung befindet sich zu jedem Zeitpunkt in genau einem Zustand. 
 
 **R3.0** NGHR darf Gehaltsabrechnungen nur für Inlandsmitarbeiter anlegen. [SCH, RR → O19]
 
-**R3.1** Folgendes gilt, sobald die Einstellung eines Inlandsmitarbeiters erfolgt ist: Seine Gehaltsabrechnung für den späteren der beiden folgenden Abrechnungsmonate ist im Zustand „Angelegt“: (1) Abrechnungsmonat seines Vertragsbeginns, (2) Einführungsmonat seiner Gehaltsklasse. [→ A10, A14]
+**R3.1** Folgendes gilt, sobald die Einstellung eines Inlandsmitarbeiters erfolgt ist: Seine Gehaltsabrechnung für den späteren der beiden folgenden Abrechnungsmonate ist im Zustand „Angelegt“: (1) Abrechnungsmonat seines Vertragsbeginns, (2) Einführungsmonat seiner Gehaltsklasse. [→ A10, A14, A22]
 
-**R3.2** Für jeden Abrechnungsmonat eines Inlandsmitarbeiters, der auf seinen Abrechnungsmonat nach R3.1 folgt und in dem sein Arbeitsverhältnis an mindestens einem Kalendertag besteht, ist spätestens am Zahltag des Vormonats eine Gehaltsabrechnung im Zustand „Angelegt“. [WW → A10]
+**R3.2** Für jeden Abrechnungsmonat eines Inlandsmitarbeiters, der auf den späteren der beiden Abrechnungsmonate (1) Abrechnungsmonat seines Vertragsbeginns, (2) Einführungsmonat seiner Gehaltsklasse folgt und in dem sein Arbeitsverhältnis an mindestens einem Kalendertag besteht, ist spätestens am Zahltag des Vormonats eine Gehaltsabrechnung im Zustand „Angelegt“. [WW → A10]
 
-_Erläuterung: Der Abrechnungsmonat nach R3.1 ist durch R3.1 abgedeckt; Abrechnungsmonate davor bleiben in PZ (R3.5). Liegt ein angelegter Abrechnungsmonat nach einer Änderung außerhalb des Arbeitsverhältnisses, entfällt die Gehaltsabrechnung im Gehaltslauf (R3.12)._
+_Erläuterung: Der spätere der beiden Abrechnungsmonate ist durch R3.1 abgedeckt; Abrechnungsmonate davor bleiben in PZ (R3.5). Liegt ein angelegter Abrechnungsmonat nach einer Änderung außerhalb des Arbeitsverhältnisses, entfällt die Gehaltsabrechnung im Gehaltslauf (R3.12)._
 
 **R3.3** Für jeden Mitarbeiter existiert je Abrechnungsmonat höchstens eine Gehaltsabrechnung. [WW]
 
@@ -184,11 +184,11 @@ _Erläuterung: Gehaltsabrechnungen früherer Abrechnungsmonate verbleiben in PZ 
 
 ### 3.3 Erstellt oder entfallen
 
-**R3.10** Im Gehaltslauf erstellt NGHR jede angelegte Gehaltsabrechnung, deren Mitarbeiter im Abrechnungsmonat mindestens einen aktiven Tag hat. [RR, WW]
+**R3.10** Im Gehaltslauf eines Abrechnungsmonats erstellt NGHR jede angelegte Gehaltsabrechnung dieses Abrechnungsmonats, deren Mitarbeiter in diesem Abrechnungsmonat mindestens einen aktiven Tag hat. [RR, WW]
 
 **R3.11** Eine Gehaltsabrechnung ist nach ihrer Erstellung im Zustand „Erstellt“ mit Zahlungsstatus „offen“ und Meldestatus „ungemeldet“. [RR, WW]
 
-**R3.12** Die angelegte Gehaltsabrechnung eines Mitarbeiters ohne aktiven Tag im Abrechnungsmonat ist nach dem Gehaltslauf im Zustand „Entfallen“. [RR, LL]
+**R3.12** Eine angelegte Gehaltsabrechnung, deren Mitarbeiter in ihrem Abrechnungsmonat keinen aktiven Tag hat, ist nach dem Gehaltslauf ihres Abrechnungsmonats im Zustand „Entfallen“. [RR, LL]
 
 _Erläuterung: Betrifft entsendete Mitarbeiter (die ausländische Tochtergesellschaft zahlt, RR) und inaktive Mitarbeiter (Sabbatical, Freistellung, längere Krankheit, LL)._
 
@@ -202,7 +202,7 @@ Die Pflege von Mitarbeiterstatus, Gehaltsdaten und Kostenstellen-Zuordnung ist n
 
 **R3.15** Kündigung und Auflösungsvertrag ändern den Mitarbeiterstatus nicht. [LL]
 
-_Erläuterung: Bis zum Vertragsende behält der Mitarbeiter daher seinen Mitarbeiterstatus; NGHR erstellt weiter Gehaltsabrechnungen für ihn._
+_Erläuterung: Eine Kündigung oder ein Auflösungsvertrag allein führt daher nicht dazu, dass eine Gehaltsabrechnung vor dem Vertragsende entfällt._
 
 **R3.16** Jeder Mitarbeiter ist genau einer Gehaltsklasse zugeordnet. [WW]
 
@@ -240,7 +240,7 @@ _Erläuterung: Welche dieser Bruttopositionen eine erstellte Gehaltsabrechnung e
 
 _Erläuterung: Für März: 16.02. bis 15.03. Ein Kundenvertrag vom 15.02. zählt für Februar, einer vom 16.03. für April._
 
-**R4.5** Die Provision beträgt 3 % der Summe der Vertragsvolumen aller Kundenverträge des Vertriebsmitarbeiters, deren Abschlussdatum im Provisionszeitraum liegt; ohne solche Kundenverträge beträgt sie 0 €. [WW]
+**R4.5** Die Provision beträgt 3 % der Summe der Vertragsvolumen aller Kundenverträge des Mitarbeiters der Gehaltsabrechnung, deren Abschlussdatum im Provisionszeitraum liegt; ohne solche Kundenverträge beträgt sie 0 €. [WW]
 
 **R4.6** NGHR kürzt die Provision nicht nach aktiven Tagen. [→ A1]
 
@@ -406,6 +406,7 @@ Die Spezifikation enthält nur, was das Fallbeispiel nennt. Auslegungen legen fe
 | A19 | Annahme | Lohnbuchungen zu Steuerpositionen haben als Buchungsdatum den Tag des Gehaltslaufs und entstehen nur für Steuerpositionen über 0 € (R5.1). Grundlage: KK „mit jeder Erstellung einer Gehaltsabrechnung“. Mit der Buchhaltung zu bestätigen. | R5.1 |
 | A20 | Auslegung | Anwender mit der Rolle Lohnbuchhaltung erfassen den Bonussatz (R4.11). Grundlage: RR, Leiter Lohnbuchhaltung, „dass man den Bonus nur einmal im Jahr für alle Manager im System eingeben muss“. | R4.11 |
 | A21 | Auslegung | Die Reihenfolge der Gehaltspositionen folgt dem Rechenweg bei WW (R4.22). | R4.22 |
+| A22 | Annahme | Die Erfassung eines Mitarbeiters in NGHR, dessen Arbeitsvertrag vor der Einführung von NGHR geschlossen wurde, ist eine Einstellung im Sinne von R3.1. Grundlage: SCH führt zuerst die Mitarbeiterstammdaten ein und lässt alte Gehaltsabrechnungen in PZ; wie bestehende Mitarbeiter in NGHR erfasst werden, nennt das Fallbeispiel nicht. Mit der Personalvorständin zu bestätigen. | R3.1 |
 
 ### 7.2 Offene Punkte (im Fallbeispiel nicht geregelt)
 
