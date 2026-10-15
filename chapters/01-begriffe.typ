@@ -1,164 +1,137 @@
 = Begriffe
 
-Begriffe benennen die „Dinge“, auf die sich die Regeln beziehen. Die Definitionen folgen der Schablone „Ein X ist ein Y, das …“ und enthalten nur das Wesentliche. Alles, was sich ändern kann (Beträge, Termine, Zuständigkeiten, Rechenwege), steht nicht in der Definition, sondern in den Regeln. Erläuterungen sind kursiv von der Definition abgesetzt.
+// Die Quelle gliedert die Begriffe in sechs Gruppen und setzt sie als
+// Zwischenueberschriften ueber die volle Tabellenbreite. Als graue Zeile
+// innerhalb einer durchlaufenden Tabelle landete eine solche Gruppe immer
+// wieder als letzte Zeile am Seitenfuss, waehrend ihr erster Begriff auf der
+// Folgeseite stand. Wo der Umbruch faellt, haengt an der Schrift (Arial lokal,
+// Liberation Sans in der Action) und laesst sich nicht zuverlaessig
+// nachjustieren. Die Gruppen sind deshalb echte Zwischenueberschriften mit je
+// einer Tabelle: Typst haelt eine Ueberschrift immer bei dem Inhalt, der auf
+// sie folgt. Nebenbei steht damit jede Gruppe im Tabellenverzeichnis.
 
-#page(flipped: true)[
-  == Mitarbeiter und Gehaltsdaten
+// Die Tabellen der grossen Gruppen sind laenger als eine Seite und muessen
+// umbrechen duerfen (Ausnahme von der Regel in main.typ). Die Kopfzeile
+// wiederholt sich dabei auf jeder Folgeseite.
+#show figure: set block(breakable: true)
 
-  #figure(
-    caption: "Begriffe: Mitarbeiter und Gehaltsdaten",
-    table(
-      columns: (auto, 1fr, auto),
-      align: (left, left, left),
-      table.header([*Begriff*], [*Definition*], [*Beleg*]),
-      [Mitarbeiter], [Ein Mitarbeiter ist eine Person, mit der die Sonnenschein AG einen Arbeitsvertrag geschlossen hat. _Erläuterung: NGHR führt ihn unter einer Personalnummer. Ehemalige Mitarbeiter sind eingeschlossen. Externe ohne Arbeitsvertrag (z. B. externe Recruiter) sind keine Mitarbeiter, aber Anwender (1.5)._], [LL, HH],
-      [Personalnummer], [Die Personalnummer ist der Identifizierer eines Mitarbeiters in NGHR. _Erläuterung: Stellt die Sonnenschein AG dieselbe Person erneut ein, erhält sie eine neue Personalnummer und ist damit ein neuer Mitarbeiter._], [LL, BB],
-      [Einstellung], [Die Einstellung ist die erstmalige Erfassung eines Mitarbeiters in NGHR, nachdem sein Arbeitsvertrag geschlossen ist. _Erläuterung: Sie kann auch erst am ersten Arbeitstag stattfinden._], [LL, HH],
-      [Vertragsbeginn], [Der Vertragsbeginn ist der Tag, an dem das Arbeitsverhältnis eines Mitarbeiters laut Arbeitsvertrag beginnt.], [LL],
-      [Vertragsende], [Das Vertragsende ist der Tag, an dem das Arbeitsverhältnis eines Mitarbeiters tatsächlich endet. _Erläuterung: nicht der Tag der Kündigung oder des Auflösungsvertrags._], [LL],
-      [Arbeitsverhältnis], [Das Arbeitsverhältnis eines Mitarbeiters ist der Zeitraum vom Vertragsbeginn bis einschließlich Vertragsende. _Erläuterung: Ist kein Vertragsende festgelegt, ist das Arbeitsverhältnis unbefristet._], [LL (A)],
-      [Sterbedatum], [Das Sterbedatum ist der Tag, an dem ein Mitarbeiter verstorben ist.], [LL, II],
-      [Mitarbeiterstatus], [Der Mitarbeiterstatus ist ein Merkmal eines Mitarbeiters, das an jedem Kalendertag genau einen Wert hat. _Erläuterung: Das Fallbeispiel nennt unter anderem die Werte „aktiv“, „inaktiv“ und „entsendet“ (RR, LL) sowie für ehemalige Mitarbeiter „Rentner“ (LL). Die vollständige Werteliste gehört zum Lebenszyklus des Mitarbeiters (0.2). Für die Gehaltsabrechnung ist nur der Wert „aktiv“ maßgeblich._], [LL, RR],
-      [Aktiver Tag], [Ein aktiver Tag ist ein Kalendertag, an dem der Mitarbeiterstatus eines Mitarbeiters „aktiv“ ist.], [LL, RR],
-      [Manager], [Ein Manager ist ein Mitarbeiter, der in NGHR das Manager-Kennzeichen trägt. _Erläuterung: In der Stellungnahme „Manager-Flag“, gesetzt durch das Personalwesen (HH). Wer der Manager eines Mitarbeiters ist, ist in NGHR gepflegt (PP)._], [HH, PP],
-      [Kostenstelle], [Eine Kostenstelle ist eine Organisationseinheit der Sonnenschein AG, der Mitarbeiter zugeordnet sind. _Erläuterung: Im ERP-System geführt; für jede Kostenstelle ist ein Manager verantwortlich (PP)._], [PP],
-      [Bankverbindung], [Die Bankverbindung ist das Konto eines Mitarbeiters, das in NGHR für Zahlungen an ihn hinterlegt ist.], [HH, LL],
-      [Krankenkasse], [Die Krankenkasse eines Mitarbeiters ist der Sozialversicherungsträger, der in NGHR für ihn hinterlegt ist.], [HH],
-      [Steueridentifikationsnummer], [Die Steueridentifikationsnummer ist der Identifizierer, unter dem das Betriebsfinanzamt einen Mitarbeiter führt.], [KK],
-      [Gehaltsklasse], [Die Gehaltsklasse ist ein im Arbeitsvertrag vereinbartes Merkmal eines Mitarbeiters, das festlegt, aus welchen Bruttopositionen sein Bruttogehalt besteht. _Erläuterung: Werte: „Gehalt“, „Gehalt und Provision“, „Gehalt und Bonus“._], [WW],
-      [Monatsgehalt], [Das Monatsgehalt ist der im Arbeitsvertrag vereinbarte monatliche Bruttobetrag eines Mitarbeiters. _Erläuterung: In den Stellungnahmen „monatliches Bruttogehalt“. Eigener Begriff, damit es weder mit der Bruttoposition „Gehalt“ noch mit dem Bruttogehalt einer Gehaltsabrechnung verwechselt wird._], [WW],
-      [Gehaltsdaten], [Die Gehaltsdaten sind die Gehaltsklasse und das Monatsgehalt eines Mitarbeiters. _Erläuterung: Wuchtig zählt genau diese beiden auf. Intims weiter gefasste Verwendung betrifft Zugriffsrechte auf Mitarbeiterdaten und ist nicht Gegenstand dieses Dokuments._], [WW],
-      [Vertriebsmitarbeiter], [Ein Vertriebsmitarbeiter ist ein Mitarbeiter mit der Gehaltsklasse „Gehalt und Provision“. _Erläuterung: NGHR kennt keine Organisationsdaten (PP). Die Zugehörigkeit zum Vertrieb ergibt sich deshalb aus der Gehaltsklasse._], [WW, PP (A)],
-    ),
-  )
+#let begriffe(titel, ..zeilen) = figure(
+  caption: "Begriffe: " + titel,
+  table(
+    // Die erste Spalte muss die langen Komposita ("Betriebsfinanzamt",
+    // "Beitragsbemessungsgrenze") aufnehmen, ohne dass sie in die Definition
+    // hineinlaufen.
+    columns: (1.3fr, 2.9fr, 0.6fr),
+    align: (left, left, left),
+    table.header([*Begriff*], [*Definition*], [*Quelle*]),
+    ..zeilen,
+  ),
+)
 
-  == Provision und Bonus
+Begriffe benennen die „Dinge“, auf die sich die Regeln beziehen. Alles, was sich ändern kann (Beträge, Termine, Rechenwege), steht nicht in der Definition, sondern in den Regeln. Erläuterungen sind nicht normativ.
 
-  #figure(
-    caption: "Begriffe: Provision und Bonus",
-    table(
-      columns: (auto, 1fr, auto),
-      align: (left, left, left),
-      table.header([*Begriff*], [*Definition*], [*Beleg*]),
-      [Kundenvertrag], [Ein Kundenvertrag ist ein Vertrag, den ein Vertriebsmitarbeiter mit einem Kunden der Sonnenschein AG abgeschlossen hat und den das CRM-System führt. _Erläuterung: Nicht zu verwechseln mit dem Arbeitsvertrag._], [RR, WW],
-      [Abschlussdatum], [Das Abschlussdatum ist der Tag, an dem ein Vertriebsmitarbeiter einen Kundenvertrag abschließt.], [WW],
-      [Vertragsvolumen], [Das Vertragsvolumen ist der Gesamtwert eines Kundenvertrags laut CRM-System.], [WW, RR],
-      [Provisionszeitraum], [Der Provisionszeitraum eines Abrechnungsmonats ist der Zeitraum, dessen Kundenverträge in die Provision dieses Abrechnungsmonats eingehen.], [WW],
-      [Provision], [Die Provision ist eine Bruttoposition, die einen Vertriebsmitarbeiter am Vertragsvolumen seiner Kundenverträge beteiligt.], [WW],
-      [Bonusjahr], [Ein Bonusjahr ist ein abgeschlossenes Kalenderjahr, auf dessen Geschäftsergebnis sich ein Bonus bezieht.], [WW],
-      [Bonussatz], [Ein Bonussatz ist ein Prozentsatz, der einem Bonusjahr zugeordnet ist.], [WW, RR],
-      [Bonus], [Der Bonus ist eine Bruttoposition, die einen Mitarbeiter am Geschäftsergebnis eines abgeschlossenen Kalenderjahres beteiligt.], [WW, RR],
-    ),
-  )
+== Mitarbeiter und Gehaltsdaten
 
-  == Gehaltsabrechnung und ihre Positionen
+#begriffe(
+  "Mitarbeiter und Gehaltsdaten",
+  [Mitarbeiter], [Ein Mitarbeiter ist eine Person bezogen auf genau einen Arbeitsvertrag, den die Sonnenschein AG mit ihr geschlossen hat. \ _Erläuterung: Ehemalige Mitarbeiter sind eingeschlossen. Stellt die Sonnenschein AG dieselbe Person erneut ein, ist sie ein neuer Mitarbeiter (R3.4)._], [LL, HH],
+  [Personalnummer], [Die Personalnummer ist der Identifizierer eines Mitarbeiters in NGHR.], [LL, BB],
+  [Einstellung], [Die Einstellung ist die Erfassung eines Mitarbeiters in NGHR nach Abschluss seines Arbeitsvertrags.], [LL, HH],
+  [Vertragsbeginn], [Der Vertragsbeginn ist der im Arbeitsvertrag vereinbarte Tag des Arbeitsbeginns.], [LL],
+  [Vertragsende], [Das Vertragsende ist der letzte Tag, an dem der Arbeitsvertrag eines Mitarbeiters gilt. \ _Erläuterung: Nicht der Tag der Kündigung oder des Auflösungsvertrags._], [LL],
+  [Arbeitsverhältnis], [Das Arbeitsverhältnis eines Mitarbeiters ist der Zeitraum von seinem Vertragsbeginn bis einschließlich seinem Vertragsende; ohne Vertragsende ist es unbefristet.], [LL],
+  [Sterbedatum], [Das Sterbedatum ist der Tag, an dem ein Mitarbeiter verstorben ist.], [LL, II],
+  [Mitarbeiterstatus], [Der Mitarbeiterstatus ist ein Merkmal eines Mitarbeiters mit genau einem Wert je Kalendertag. \ _Erläuterung: Werte sind u. a. „aktiv“, „inaktiv“, „entsendet“, „Rentner“._], [LL, RR],
+  [Aktiver Tag], [Ein aktiver Tag ist ein Kalendertag, an dem der Mitarbeiterstatus eines Mitarbeiters „aktiv“ ist.], [LL, RR],
+  [Manager], [Ein Manager ist ein Mitarbeiter, für den in NGHR das Manager-Kennzeichen gesetzt ist.], [HH, PP],
+  [Kostenstelle], [Eine Kostenstelle ist eine im ERP-System geführte Organisationseinheit, der Mitarbeiter tagesgenau zugeordnet sind.], [PP],
+  [Bankverbindung], [Die Bankverbindung ist das Konto, das in NGHR für Zahlungen an einen Mitarbeiter hinterlegt ist.], [HH],
+  [Steuer-ID], [Die Steuer-ID (Steueridentifikationsnummer) ist der Identifizierer, unter dem das Betriebsfinanzamt einen Mitarbeiter führt.], [KK],
+  [Gehaltsklasse], [Die Gehaltsklasse ist ein im Arbeitsvertrag vereinbartes Merkmal eines Mitarbeiters, das festlegt, aus welchen Bruttopositionen sein Bruttogehalt besteht. \ _Erläuterung: Werte: „Gehalt“, „Gehalt und Provision“, „Gehalt und Bonus“._], [WW],
+  [Monatsgehalt], [Das Monatsgehalt ist der im Arbeitsvertrag vereinbarte monatliche Bruttobetrag eines Mitarbeiters. \ _Erläuterung: Bei WW „monatliches Bruttogehalt“; nicht zu verwechseln mit dem Bruttogehalt einer Gehaltsabrechnung._], [WW],
+  [Gehaltsdaten], [Die Gehaltsdaten eines Mitarbeiters sind seine Gehaltsklasse und sein Monatsgehalt. \ _Erläuterung: Zur weiteren Lesart bei II siehe A13._], [WW → A13],
+  [Vertriebsmitarbeiter], [Ein Vertriebsmitarbeiter ist ein Mitarbeiter mit der Gehaltsklasse „Gehalt und Provision“. \ _Erläuterung: NGHR kennt keine Organisationsdaten (PP); Vertriebsmitarbeiter sind daher nur über die Gehaltsklasse bestimmbar._], [WW, PP],
+)
 
-  #figure(
-    caption: "Begriffe: Gehaltsabrechnung und ihre Positionen",
-    table(
-      columns: (auto, 1fr, auto),
-      align: (left, left, left),
-      table.header([*Begriff*], [*Definition*], [*Beleg*]),
-      [Abrechnungsmonat], [Der Abrechnungsmonat ist der Kalendermonat, für den eine Gehaltsabrechnung gilt.], [KK],
-      [Gehaltsposition], [Eine Gehaltsposition ist ein benannter Betrag.], [WW],
-      [Gehaltsabrechnung], [Eine Gehaltsabrechnung ist eine Aufstellung der Gehaltspositionen eines Mitarbeiters für einen Abrechnungsmonat. _Erläuterung: Sie existiert bereits ohne Gehaltspositionen, bevor ihr Inhalt feststeht (Zustand „Angelegt“, Kapitel 2)._], [WW],
-      [Zahlungsstatus], [Der Zahlungsstatus ist ein Merkmal einer erstellten Gehaltsabrechnung, das angibt, ob alle für sie geschuldeten Überweisungen ausgelöst sind. _Erläuterung: Werte „offen“ und „ausgezahlt“ (2.1)._], [KK, WW (A)],
-      [Meldestatus], [Der Meldestatus ist ein Merkmal einer erstellten Gehaltsabrechnung, das angibt, ob ihr Bruttogehalt in einer Steuermeldung berücksichtigt ist. _Erläuterung: Werte „ungemeldet“ und „gemeldet“ (2.1)._], [KK (A)],
-      [Bruttoposition], [Eine Bruttoposition ist eine Gehaltsposition, die eine Vergütung des Mitarbeiters vor Abzug von Steuern und SV-Beiträgen ausweist. _Erläuterung: Gehalt, Provision, Bonus._], [WW, RR],
-      [Gehalt], [Das Gehalt ist die Bruttoposition, die den auf den Abrechnungsmonat entfallenden Teil des Monatsgehalts ausweist.], [WW],
-      [Bruttogehalt], [Das Bruttogehalt ist die Gehaltsposition, die die gesamte Vergütung des Mitarbeiters für den Abrechnungsmonat vor Abzügen ausweist.], [WW],
-      [Steuerart], [Eine Steuerart ist eine Abgabe an das Betriebsfinanzamt, die vom Bruttogehalt abgezogen wird.], [KK],
-      [Einkommensteuer (ESt)], [Die Einkommensteuer ist die Steuerart, die auf das Jahresbruttogehalt erhoben wird. _Erläuterung: Grundfreibetrag und Steuersatz legen R4.13 und R4.14 fest._], [KK],
-      [Solidaritätszuschlag (Soli)], [Der Solidaritätszuschlag ist die Steuerart, die auf die Einkommensteuer erhoben wird.], [KK],
-      [Steuerposition], [Eine Steuerposition ist eine Gehaltsposition, die eine Steuerart ausweist.], [WW, KK],
-      [Nettogehalt], [Das Nettogehalt ist die Gehaltsposition, die die Vergütung des Mitarbeiters nach Steuern ausweist.], [WW],
-      [Versicherungsart], [Eine Versicherungsart ist eine der vier Sozialversicherungen: Krankenversicherung (KV), Pflegeversicherung (PV), Arbeitslosenversicherung (AV), Rentenversicherung (RV).], [WW],
-      [SV-Beitrag], [Ein SV-Beitrag ist eine Gehaltsposition, die den gesamten Beitrag zu einer Versicherungsart ausweist.], [WW, KK],
-      [Arbeitgeberanteil], [Ein Arbeitgeberanteil ist eine Gehaltsposition, die den Teil eines SV-Beitrags ausweist, den die Sonnenschein AG trägt.], [WW],
-      [Auszahlungsbetrag], [Der Auszahlungsbetrag ist die Gehaltsposition, die den Betrag ausweist, den der Mitarbeiter für den Abrechnungsmonat erhält.], [WW, KK],
-      [Gesamtlohnkosten], [Die Gesamtlohnkosten sind der Betrag, den die Sonnenschein AG für einen Mitarbeiter und einen Abrechnungsmonat insgesamt aufwendet. _Erläuterung: Bruttogehalt zuzüglich aller Arbeitgeberanteile (WW). Nur für den Forecast relevant → O22._], [WW, PP],
-    ),
-  )
+== Provision und Bonus
 
-  == Steuern und Sozialversicherung
+#begriffe(
+  "Provision und Bonus",
+  [Kundenvertrag], [Ein Kundenvertrag ist ein Vertrag, den ein Vertriebsmitarbeiter mit einem Kunden abgeschlossen hat und den das CRM-System führt.], [RR, WW],
+  [Abschlussdatum], [Das Abschlussdatum ist der Tag, an dem ein Kundenvertrag abgeschlossen wurde.], [WW],
+  [Vertragsvolumen], [Das Vertragsvolumen ist der Gesamtwert eines Kundenvertrags laut CRM-System.], [WW, RR],
+  [Provisionszeitraum], [Der Provisionszeitraum eines Abrechnungsmonats ist der Zeitraum, aus dem Kundenverträge in die Provision dieses Abrechnungsmonats eingehen (R4.4).], [WW],
+  [Bonusjahr], [Ein Bonusjahr ist ein Kalenderjahr, für das die Geschäftsführung einen Bonussatz festlegt.], [WW],
+  [Bonussatz], [Ein Bonussatz ist ein Prozentsatz des Monatsgehalts, der den Bonus für ein Bonusjahr bestimmt.], [WW, RR],
+)
 
-  #figure(
-    caption: "Begriffe: Steuern und Sozialversicherung",
-    table(
-      columns: (auto, 1fr, auto),
-      align: (left, left, left),
-      table.header([*Begriff*], [*Definition*], [*Beleg*]),
-      [Kalenderjahr einer Gehaltsabrechnung], [Das Kalenderjahr einer Gehaltsabrechnung ist das Kalenderjahr, in dem ihr Abrechnungsmonat liegt.], [KK, WW (A)],
-      [Frühere Gehaltsabrechnung], [Eine frühere Gehaltsabrechnung einer Gehaltsabrechnung ist eine Gehaltsabrechnung desselben Mitarbeiters mit kleinerem Abrechnungsmonat im selben Kalenderjahr.], [(A)],
-      [Kumuliertes Bruttogehalt], [Das kumulierte Bruttogehalt ist die Summe der Bruttogehälter einer Gehaltsabrechnung und aller ihrer früheren Gehaltsabrechnungen. _Erläuterung: Für den Abrechnungsmonat Dezember entspricht es dem Jahresbruttogehalt._], [KK, WW (A)],
-      [Kumulierte Einkommensteuer], [Die kumulierte Einkommensteuer ist die Einkommensteuer, die auf das kumulierte Bruttogehalt einer Gehaltsabrechnung entfällt.], [KK (A)],
-      [Kumulierter Solidaritätszuschlag], [Der kumulierte Solidaritätszuschlag ist der Solidaritätszuschlag, der auf die kumulierte Einkommensteuer einer Gehaltsabrechnung entfällt.], [KK (A)],
-      [Jahresbruttogehalt], [Das Jahresbruttogehalt ist die Summe der Bruttogehälter aller Gehaltsabrechnungen eines Mitarbeiters in einem Kalenderjahr.], [KK, WW (A)],
-      [Grundfreibetrag], [Der Grundfreibetrag ist der Teil des Jahresbruttogehalts, der keiner Einkommensteuer unterliegt.], [KK],
-      [Beitragssatz], [Der Beitragssatz ist der Prozentsatz, mit dem der SV-Beitrag einer Versicherungsart berechnet wird.], [WW],
-      [Beitragsbemessungsgrenze (BBM)], [Die Beitragsbemessungsgrenze ist der Betrag des Jahresbruttogehalts, bis zu dem für eine Versicherungsart Beiträge anfallen.], [WW],
-      [Beitragspflichtiger Betrag], [Der beitragspflichtige Betrag ist der Teil des Bruttogehalts einer Gehaltsabrechnung, auf den für eine Versicherungsart Beiträge anfallen.], [WW (A)],
-    ),
-  )
+== Gehaltsabrechnung und Gehaltspositionen
 
-  == Abläufe, Termine, Systeme und Beteiligte
+#begriffe(
+  "Gehaltsabrechnung und Gehaltspositionen",
+  [Abrechnungsmonat], [Der Abrechnungsmonat ist der Kalendermonat, für den eine Gehaltsabrechnung gilt.], [KK],
+  [Gehaltsabrechnung], [Eine Gehaltsabrechnung ist eine Aufstellung der Gehaltspositionen eines Mitarbeiters für einen Abrechnungsmonat.], [WW],
+  [Gehaltsposition], [Eine Gehaltsposition ist ein benannter Betrag einer Gehaltsabrechnung.], [WW],
+  [Bruttoposition], [Eine Bruttoposition ist eine Gehaltsposition, die eine Vergütung vor Abzügen ausweist: Gehalt, Provision oder Bonus.], [WW, RR],
+  [Gehalt], [Das Gehalt ist die Bruttoposition, die den auf den Abrechnungsmonat entfallenden Teil des Monatsgehalts ausweist.], [WW],
+  [Provision], [Die Provision ist die Bruttoposition, die einen Vertriebsmitarbeiter am Vertragsvolumen seiner Kundenverträge beteiligt.], [WW],
+  [Bonus], [Der Bonus ist die Bruttoposition, die die jährliche Zahlung an einen Mitarbeiter der Gehaltsklasse „Gehalt und Bonus“ ausweist.], [WW, RR],
+  [Bruttogehalt], [Das Bruttogehalt ist die Gehaltsposition mit der gesamten Vergütung für den Abrechnungsmonat vor Abzügen.], [WW],
+  [Steuerart], [Eine Steuerart ist eine Abgabe an das Betriebsfinanzamt, die vom Bruttogehalt abgezogen wird: Einkommensteuer (ESt) oder Solidaritätszuschlag (Soli).], [KK],
+  [Steuerposition], [Eine Steuerposition ist eine Gehaltsposition, die den Betrag einer Steuerart ausweist.], [WW, KK],
+  [Nettogehalt], [Das Nettogehalt ist die Gehaltsposition mit der Vergütung nach Abzug der Steuerpositionen.], [WW],
+  [Versicherungsart], [Eine Versicherungsart ist eine der Sozialversicherungen Kranken- (KV), Pflege- (PV), Arbeitslosen- (AV) oder Rentenversicherung (RV).], [WW],
+  [SV-Beitrag], [Ein SV-Beitrag ist eine Gehaltsposition mit dem gesamten Beitrag zu einer Versicherungsart.], [WW],
+  [Arbeitgeberanteil], [Ein Arbeitgeberanteil ist eine Gehaltsposition mit dem Teil eines SV-Beitrags, den die Sonnenschein AG trägt.], [WW],
+  [Auszahlungsbetrag], [Der Auszahlungsbetrag ist die Gehaltsposition mit dem Betrag, den der Mitarbeiter für den Abrechnungsmonat erhält.], [WW],
+)
 
-  #figure(
-    caption: "Begriffe: Abläufe, Termine, Systeme und Beteiligte",
-    table(
-      columns: (auto, 1fr, auto),
-      align: (left, left, left),
-      table.header([*Begriff*], [*Definition*], [*Beleg*]),
-      [Gehaltslauf], [Ein Gehaltslauf ist eine Verarbeitung in NGHR, die angelegte Gehaltsabrechnungen eines Abrechnungsmonats erstellt.], [RR],
-      [Wochentag], [Ein Wochentag ist ein Kalendertag von Montag bis Freitag. _Erläuterung: Feiertage bleiben unberücksichtigt → A9, O14._], [WW],
-      [Zahltag], [Der Zahltag eines Abrechnungsmonats ist der Kalendertag, an dem die Auszahlungsbeträge seiner Gehaltsabrechnungen fällig sind.], [WW, BB],
-      [Überweisung], [Eine Überweisung ist eine Zahlung vom Bankkonto der Sonnenschein AG an einen Empfänger.], [KK, BB],
-      [Buchungsdatum], [Das Buchungsdatum ist der Tag, an dem NGHR eine Überweisung auslöst oder eine Steuerposition berechnet.], [KK (A)],
-      [Zahlungsabfluss], [Ein Zahlungsabfluss ist ein Geldbetrag, der durch eine Überweisung vom Bankkonto der Sonnenschein AG abfließt.], [KK, PP],
-      [Lohnbuch], [Das Lohnbuch ist das Buch im ERP-System, in dem die Buchhaltung die Personalkosten je Mitarbeiter führt.], [KK],
-      [Lohnbuchung], [Eine Lohnbuchung ist ein Eintrag im Lohnbuch, der einen Betrag einer Gehaltsabrechnung ausweist. _Erläuterung: Gebucht werden Zahlungsabflüsse und Steuerpositionen; Steuern „als ob diese monatlich abfließen“ (KK). Welche Angaben eine Lohnbuchung enthält, legen R5.1 und R5.10 fest._], [KK, PP],
-      [Meldequartal], [Das Meldequartal einer Gehaltsabrechnung ist das Kalenderquartal, in dem ihr Abrechnungsmonat liegt.], [KK],
-      [Quartalsbruttoeinkommen], [Das Quartalsbruttoeinkommen ist die Summe der Bruttogehälter der Gehaltsabrechnungen eines Mitarbeiters mit demselben Meldequartal, die eine Steuermeldung berücksichtigt. _Erläuterung: In der Stellungnahme „Bruttoeinkommen“._], [KK (A)],
-      [Steuermeldung], [Eine Steuermeldung ist eine elektronische Meldung an das Betriebsfinanzamt, die Bruttogehälter von Gehaltsabrechnungen je Mitarbeiter und Meldequartal übermittelt. _Erläuterung: Übertragungsweg und Termine legt R5.12 fest._], [KK],
-      [Betriebsfinanzamt], [Das Betriebsfinanzamt ist die Finanzbehörde, die die Steuern auf die Gehälter der Sonnenschein AG einzieht.], [KK],
-      [Löschzeitpunkt], [Der Löschzeitpunkt ist der Tag, an dem NGHR alle Daten eines Mitarbeiters löscht.], [II],
-      [PZ], [PZ („Personal Zentral“) ist das bisherige Personalsystem der Sonnenschein AG, das NGHR ablöst.], [SCH],
-      [ERP-System], [Das ERP-System ist das System für Controlling und Buchhaltung, das Kostenstellen und das Lohnbuch führt.], [BB, PP, KK],
-      [CRM-System], [Das CRM-System ist das System, das die Kundenverträge führt.], [RR],
-      [Hausbank], [Die Hausbank ist die Bank, bei der die Sonnenschein AG das Bankkonto führt, von dem NGHR Überweisungen auslöst.], [KK, BB],
-      [I&B], [I&B ist der zentrale Identity-Provider, der User und Rollen führt und an NGHR verteilt.], [BB],
-      [User], [Ein User ist die Benutzerkennung eines Anwenders in I&B.], [BB],
-      [Anwender], [Ein Anwender ist eine Person, die einen User hat. _Erläuterung: Mitarbeiter und externe Recruiter._], [BB, HH (A)],
-      [Rolle], [Eine Rolle ist eine Berechtigungsgruppe in I&B, die einem Anwender zugeordnet ist.], [BB],
-      [Lohnbuchhaltung], [Die Lohnbuchhaltung ist die Rolle der Anwender aus der Abteilung Lohnbuchhaltung der Sonnenschein AG.], [BB, WW, II],
-      [Personalwesen], [Das Personalwesen ist die Rolle der Anwender aus der Personalabteilung der Sonnenschein AG. _Erläuterung: Anwender der Lohnbuchhaltung haben zusätzlich die Rolle Lohnbuchhaltung (II, HH)._], [BB, II, HH],
-      [Recruiting], [Recruiting ist die Rolle der internen und externen Anwender aus dem Recruiting-Team der Sonnenschein AG.], [BB, HH],
-      [Employee Self-Service (ESS)], [Die ESS ist die Benutzerschnittstelle von NGHR, in der ein Mitarbeiter seine eigenen Daten einsieht.], [BB],
-      [Geschäftsführung], [Die Geschäftsführung ist das Leitungsorgan der Sonnenschein AG.], [WW, PP],
-    ),
-  )
+== Jahreswerte für Steuer und Sozialversicherung
 
-  == Fachliches Datenmodell
+#begriffe(
+  "Jahreswerte für Steuer und Sozialversicherung",
+  [Frühere Gehaltsabrechnung], [Eine frühere Gehaltsabrechnung ist eine erstellte Gehaltsabrechnung desselben Mitarbeiters mit früherem Abrechnungsmonat im selben Kalenderjahr. \ _Erläuterung: Angelegte und entfallene Gehaltsabrechnungen gehen damit in keine Summe ein._], [KK, WW],
+  [Kumuliertes Bruttogehalt], [Das kumulierte Bruttogehalt ist die Summe der Bruttogehälter einer Gehaltsabrechnung und aller ihrer früheren Gehaltsabrechnungen.], [KK, WW],
+  [Kumulierte ESt], [Die kumulierte ESt ist die Einkommensteuer auf das kumulierte Bruttogehalt einer Gehaltsabrechnung (R4.13).], [KK],
+  [Kumulierter Soli], [Der kumulierte Soli ist der Solidaritätszuschlag auf die kumulierte ESt einer Gehaltsabrechnung (R4.15).], [KK],
+  [Jahresbruttogehalt], [Das Jahresbruttogehalt ist die Summe der Bruttogehälter aller erstellten Gehaltsabrechnungen eines Mitarbeiters in einem Kalenderjahr.], [KK, WW],
+  [Grundfreibetrag], [Der Grundfreibetrag ist der Teil des Jahresbruttogehalts, der keiner Einkommensteuer unterliegt.], [KK],
+  [Beitragsbemessungsgrenze (BBM)], [Die BBM ist das Jahresbruttogehalt, bis zu dem für eine Versicherungsart Beiträge anfallen.], [WW],
+  [Beitragspflichtiger Betrag], [Der beitragspflichtige Betrag ist der Teil des Bruttogehalts einer Gehaltsabrechnung, auf den für eine Versicherungsart Beiträge anfallen.], [WW],
+)
 
-  Geschäftsobjekte mit Kernattributen (Identifizierer, Lebenszyklusstatus) und ihre Beziehungen (Bedeutung, Kardinalität, Richtung):
+== Abläufe und Termine
 
-  #figure(
-    caption: "Fachliches Datenmodell: Geschäftsobjekte und Beziehungen",
-    table(
-      columns: (1.5fr, 0.7fr, 1.5fr, 0.6fr, 1.2fr),
-      align: (left, left, left, left, left),
-      table.header([*Von*], [*Beziehung*], [*Nach*], [*Kardinalität*], [*Bedeutung*]),
-      [Mitarbeiter (Personalnummer, Steueridentifikationsnummer, Mitarbeiterstatus je Tag, Vertragsbeginn, Vertragsende, Sterbedatum, Gehaltsklasse, Monatsgehalt, Manager-Kennzeichen, Bankverbindung, Krankenkasse)], [hat], [Gehaltsabrechnung (Personalnummer, Abrechnungsmonat, Zustand, Zahlungsstatus, Meldestatus, Zahltag, Tag des Gehaltslaufs, Gehaltsklasse, Monatsgehalt, Anzahl der aktiven Tage)], [1 : 0..\*], [Jede Gehaltsabrechnung gehört zu genau einem Mitarbeiter; je Abrechnungsmonat höchstens eine (R3.3, R3.4).],
-      [Mitarbeiter], [hat Manager], [Mitarbeiter], [0..\* : 0..1], [In NGHR gepflegt (PP); Grundlage für R6.7.],
-      [Mitarbeiter], [ist zugeordnet (tagesgenau)], [Kostenstelle], [0..\* : 1], [Zuordnung durch das Controlling im ERP-System (R3.18).],
-      [Gehaltsabrechnung], [ist zugeordnet], [Kostenstelle], [0..\* : 1], [Kostenstelle am letzten aktiven Tag (R3.18).],
-      [Mitarbeiter (Vertriebsmitarbeiter)], [hat abgeschlossen], [Kundenvertrag (Abschlussdatum, Vertragsvolumen)], [1 : 0..\*], [Nur Vertriebsmitarbeiter erhalten dafür Provision (R4.3).],
-      [Gehaltsabrechnung], [enthält], [Gehaltsposition (Bezeichnung, Betrag)], [1 : 0..\*], [In den Zuständen „Angelegt“ und „Entfallen“ keine; ab „Erstellt“ alle nach R4.25.],
-      [Kundenvertrag], [geht ein in], [Gehaltsabrechnung], [0..\* : 0..1], [Höchstens eine Gehaltsabrechnung je Kundenvertrag (R4.6).],
-      [Bonussatz (Bonusjahr, Prozentsatz)], [bemisst], [Gehaltsabrechnung], [1 : 0..\*], [Nur Abrechnungsmonat Mai, nur Gehaltsklasse „Gehalt und Bonus“ (R4.7).],
-      [Gehaltsabrechnung], [löst aus], [Zahlungsabfluss (Buchungsdatum, Betrag, Zweck)], [1 : 0..\*], [Auszahlungsbetrag und je ein SV-Beitrag (R5.3, R5.4).],
-      [Gehaltsabrechnung], [wird gebucht durch], [Lohnbuchung (Buchungsdatum, Betrag, Zweck)], [1 : 0..\*], [Je Steuerposition bei Erstellung, je Zahlungsabfluss bei Überweisung (R5.1, R5.10).],
-      [Gehaltsabrechnung], [ist berücksichtigt in], [Steuermeldung (Sendedatum)], [0..\* : 0..1], [Eine Gehaltsabrechnung gehört zu höchstens einer Steuermeldung (R5.13).],
-    ),
-  )
-]
+#begriffe(
+  "Abläufe und Termine",
+  [Einführungsmonat], [Der Einführungsmonat einer Gehaltsklasse ist der erste Abrechnungsmonat, für den NGHR Gehaltsabrechnungen von Mitarbeitern dieser Gehaltsklasse erstellt. \ _Erläuterung: „Gehalt“: Release 2; „Gehalt und Provision“ und „Gehalt und Bonus“: Release 3 (SK F6)._], [SCH, SK F6],
+  [Gehaltslauf], [Ein Gehaltslauf ist eine Verarbeitung in NGHR, die angelegte Gehaltsabrechnungen eines Abrechnungsmonats erstellt oder als entfallen kennzeichnet.], [RR],
+  [Wochentag], [Ein Wochentag ist ein Kalendertag von Montag bis Freitag.], [WW → A9],
+  [Zahltag], [Der Zahltag ist der Kalendertag, an dem die Auszahlungsbeträge der Gehaltsabrechnungen eines Abrechnungsmonats fällig sind.], [WW, BB],
+  [Überweisung], [Eine Überweisung ist eine Zahlung vom Konto der Sonnenschein AG bei der Hausbank an einen Empfänger.], [KK, BB],
+  [Zahlungsabfluss], [Ein Zahlungsabfluss ist eine Überweisung, die NGHR für eine Gehaltsabrechnung auslöst.], [KK, PP],
+  [Lohnbuch], [Das Lohnbuch ist das Buch im ERP-System, in dem die Buchhaltung Zahlungsabflüsse und Steuern je Mitarbeiter verbucht.], [KK],
+  [Lohnbuchung], [Eine Lohnbuchung ist ein Eintrag im Lohnbuch zu einem Zahlungsabfluss oder zu einer Steuerposition.], [KK, PP],
+  [Meldequartal], [Das Meldequartal einer Gehaltsabrechnung ist das Kalenderquartal, in dem ihr Abrechnungsmonat liegt.], [KK],
+  [Quartalsbruttoeinkommen], [Das Quartalsbruttoeinkommen ist die Summe der Bruttogehälter der Gehaltsabrechnungen eines Mitarbeiters mit demselben Meldequartal, die eine Steuermeldung berücksichtigt. \ _Erläuterung: Bei KK „Bruttoeinkommen“._], [KK],
+  [Steuermeldung], [Eine Steuermeldung ist eine elektronische Meldung per Elster an das Betriebsfinanzamt, die Quartalsbruttoeinkommen je Mitarbeiter übermittelt.], [KK],
+  [Löschzeitpunkt], [Der Löschzeitpunkt eines Mitarbeiters ist der Tag, an dem NGHR alle Daten dieses Mitarbeiters löscht (R6.7).], [II],
+)
+
+== Systeme und Beteiligte
+
+#begriffe(
+  "Systeme und Beteiligte",
+  [PZ], [PZ („Personal Zentral“) ist das bestehende IT-System für das Personalwesen, das NGHR ablöst.], [SCH],
+  [ERP-System], [Das ERP-System ist das System für Controlling und Buchhaltung, das Kostenstellen und Lohnbuch führt.], [BB, PP, KK],
+  [CRM-System], [Das CRM-System ist das System, das die Kundenverträge führt.], [RR],
+  [Vertragsschnittstelle], [Die Vertragsschnittstelle ist die Schnittstelle des CRM-Systems, über die andere Systeme Kundenverträge abrufen.], [RR],
+  [Hausbank], [Die Hausbank ist die Bank, bei der die Sonnenschein AG das Konto führt, von dem NGHR Überweisungen auslöst.], [KK, BB],
+  [Betriebsfinanzamt], [Das Betriebsfinanzamt ist die Finanzbehörde, die die Steuern auf die Gehälter der Sonnenschein AG einzieht.], [KK],
+  [Elster], [Elster ist das elektronische Verfahren, über das NGHR Steuermeldungen an das Betriebsfinanzamt übermittelt.], [KK],
+  [I&B], [I&B ist der zentrale Identity-Provider der Sonnenschein AG.], [BB],
+  [User], [Ein User ist ein Benutzerkonto in I&B, das aktiv oder inaktiv ist.], [BB],
+  [Anwender], [Ein Anwender ist eine Person mit einem User. \ _Erläuterung: Mitarbeiter und externe Recruiter (HH)._], [BB, HH],
+  [Rolle], [Eine Rolle ist eine Berechtigungsgruppe, die I&B einem Anwender zuordnet. \ _Erläuterung: U. a. Mitarbeiter, Manager, Personalwesen, Lohnbuchhaltung, Recruiting. Anwender mit der Rolle Lohnbuchhaltung haben auch die Rolle Personalwesen (II, HH)._], [BB, HH, II],
+  [Employee Self-Service (ESS)], [Die ESS ist die Benutzerschnittstelle von NGHR, in der ein Mitarbeiter seine eigenen Daten und Gehaltsabrechnungen einsieht.], [BB],
+)

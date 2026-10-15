@@ -20,9 +20,11 @@ jobs:
         # Zeichenbreiten.
         #
         # ACHTUNG: Das Ergebnis ist NICHT seitengleich zum lokalen Build mit
-        # Arial. Gemessen am 14.10.2026: hier 72 Seiten, lokal auf macOS 74.
-        # Das Artefakt dieser Action ist daher eine eigene Fassung, keine
-        # Kopie des lokalen PDFs.
+        # Arial. Der lokale Build auf macOS hat am 15.10.2026 17 Seiten; der
+        # Umfang dieser Action kann davon abweichen, auch der Seitenumbruch
+        # innerhalb langer Tabellen. Das Artefakt dieser Action ist daher eine
+        # eigene Fassung, keine Kopie des lokalen PDFs. Wer abgibt, sollte
+        # festlegen, welcher der beiden Builds die Abgabefassung ist.
         run: |
           sudo apt-get update
           sudo apt-get install -y fonts-liberation
@@ -37,14 +39,21 @@ jobs:
         run: typst compile main.typ main.pdf
 
       - name: Vollstaendigkeit pruefen
-        # Bricht den Build ab, wenn Regeln oder Testbeispiele verloren gehen.
+        # Bricht den Build ab, wenn Regeln, Annahmen oder offene Punkte
+        # verloren gehen. Die Sollwerte stammen aus spec-source.md
+        # (NGHR – Fachliche Regeln, Stand 15.10.2026): 67 Regeln R3.1 bis
+        # R6.9, 13 Auslegungen/Annahmen A1 bis A13, 18 offene Punkte O1 bis
+        # O18. Testbeispiele und Rechenbeispiel sind nicht mehr Teil des
+        # Dokuments; die Berechnung steht als Formeltabelle in Abschnitt 4.3.
         run: |
-          regeln=$(grep -rhoE 'R[0-9]+\.[0-9]+' chapters/ | sort -u | wc -l)
-          tests=$(grep -rhoE 'T[0-9]+[ab]? –' chapters/ | sort -u | wc -l)
-          echo "Regeln: $regeln (erwartet 71)"
-          echo "Testbeispiele: $tests (erwartet 20)"
-          if [ "$regeln" -ne 71 ] || [ "$tests" -ne 20 ]; then
-            echo "::error::Regel- oder Testanzahl abweichend. Erwartet 71 Regeln und 20 Testbeispiele."
+          regeln=$(grep -rhoE 'R[3-6]\.[0-9]+' chapters/ | sort -u | wc -l)
+          annahmen=$(grep -rhoE '\[A[0-9]+\]' chapters/ | sort -u | wc -l)
+          offene=$(grep -rhoE '\[O[0-9]+\]' chapters/ | sort -u | wc -l)
+          echo "Regeln: $regeln (erwartet 67)"
+          echo "Auslegungen/Annahmen: $annahmen (erwartet 13)"
+          echo "Offene Punkte: $offene (erwartet 18)"
+          if [ "$regeln" -ne 67 ] || [ "$annahmen" -ne 13 ] || [ "$offene" -ne 18 ]; then
+            echo "::error::Anzahl weicht ab. Erwartet 67 Regeln, 13 Annahmen, 18 offene Punkte."
             exit 1
           fi
 

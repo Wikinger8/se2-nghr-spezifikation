@@ -181,7 +181,13 @@
   set figure.caption(separator: [ --- ], position: bottom)
 
   // set body font family
-  set text(font: body-font, lang: language, 12pt)
+  // ANPASSUNG gegenueber supercharged-dhbw 3.5.0: 10pt statt 12pt. Das ist
+  // keine lokale Verkleinerung, damit irgendwo etwas passt, sondern die
+  // Grundschriftgroesse des ganzen Dokuments — Fliesstext, Tabellen und
+  // Verzeichnisse aendern sich gemeinsam, das Satzbild bleibt einheitlich.
+  // Zusammen mit den Abstaenden unten (leading, spacing) spart das rund ein
+  // Drittel der Seiten.
+  set text(font: body-font, lang: language, 10pt)
   show heading: set text(weight: "semibold", font: heading-font)
 
   // heading numbering
@@ -300,7 +306,22 @@
               gutter: 2em,
               if (show-header-chapter) {
                 align(left + bottom)[
-                  #let headings = query(heading.where(level: 1))
+                  // ANPASSUNG gegenueber supercharged-dhbw 3.5.0: Die
+                  // Verzeichnisse im Vorspann (Inhalts-, Tabellenverzeichnis)
+                  // sind ebenfalls Ueberschriften der Ebene 1. Solange jedes
+                  // Kapitel auf einer neuen Seite begann, fiel das nicht auf.
+                  // Seit der Hauptteil mitten auf einer Seite beginnen kann,
+                  // nannte die Kopfzeile der ersten Textseite das zuletzt
+                  // gesetzte Verzeichnis. Die Kopfzeile beruecksichtigt
+                  // deshalb nur Ueberschriften ab dem Beginn des Hauptteils.
+                  #let main-start = query(<numbering-main-start>)
+                  #let main-start-page = if (main-start.len() > 0) {
+                    main-start.first().location().page()
+                  } else {
+                    0
+                  }
+                  #let in-main(it) = it.location().page() >= main-start-page
+                  #let headings = query(heading.where(level: 1)).filter(in-main)
                   // ANPASSUNG gegenueber supercharged-dhbw 3.5.0: Frueher
                   // genuegte es zu pruefen, ob auf dieser Seite irgendwo eine
                   // Kapitelueberschrift liegt — Kapitel begannen ja immer oben
@@ -314,34 +335,27 @@
                       and it.location().position().y < 140pt
                   ))
                   #if headings.len() > 0 and not starts-at-top {
-                    let elems = query(selector(heading.where(level: 1)).before(here()))
+                    let elems = query(selector(heading.where(level: 1)).before(here())).filter(in-main)
 
                     if (elems.len() > 0) {
                       let current-heading = elems.last()
                       let heading-counter = if current-heading.numbering == none {
                         none
                       } else {
-                        // ANPASSUNG gegenueber supercharged-dhbw 3.5.0:
-                        // Die Kapitel dieses Dokuments werden ab 0 nummeriert
-                        // (siehe heading-numbering in main.typ). Der rohe
-                        // Counter liegt dadurch um 1 zu hoch.
-                        counter(heading).get().first() - 1
+                        counter(heading).get().first()
                       }
 
                       [#heading-counter #current-heading.body]
                     }
                   } else {
-                    let elems = query(selector(heading.where(level: 1)).after(here()))
+                    let elems = query(selector(heading.where(level: 1)).after(here())).filter(in-main)
 
                     if (elems.len() > 0) {
                       let current-heading = elems.first()
                       let heading-counter = if current-heading.numbering == none {
                         none
                       } else {
-                        // ANPASSUNG gegenueber supercharged-dhbw 3.5.0:
-                        // wie oben, Offset von -1 fuer die ab 0 startende
-                        // Kapitelnummerierung. (+ 1 - 1 = unveraendert)
-                        counter(heading).get().first()
+                        counter(heading).get().first() + 1
                       }
 
                       [#heading-counter #current-heading.body]
@@ -464,20 +478,16 @@
 
   if (show-table-of-contents) {
     pagebreak(weak: true)
-    // ANPASSUNG gegenueber supercharged-dhbw 3.5.0: Das Inhaltsverzeichnis
-    // laeuft bei 12pt Schrift und 18pt Kapitelabstand auf eine zweite Seite
-    // ueber. Mit 9pt und 12pt passt es auf eine Seite, und die Gruppierung
-    // nach Hauptkapiteln bleibt sichtbar. Beides gilt nur fuer dieses eine
-    // Verzeichnis: Ueberschrift, Fliesstext und die uebrigen Verzeichnisse
-    // (z. B. Tabellenverzeichnis) bleiben unveraendert.
-    outline-entry-style(12pt, {
-      show outline.entry: set text(size: 9pt)
-      outline(
-        title: TABLE_OF_CONTENTS.at(language),
-        indent: auto,
-        depth: toc-depth,
-      )
-    })
+    // Keine ANPASSUNG mehr: Die frühere Fassung setzte das Inhaltsverzeichnis
+    // auf 9pt Schrift und 12pt Kapitelabstand, weil es bei 12pt auf eine
+    // zweite Seite lief. Mit der jetzigen Gliederung (acht Kapitel) passt es
+    // in der Groesse der Vorlage auf eine Seite; die Ausnahme ist damit
+    // ueberfluessig und entfaellt.
+    outline-entry-style(18pt, outline(
+      title: TABLE_OF_CONTENTS.at(language),
+      indent: auto,
+      depth: toc-depth,
+    ))
   }
 
   context {
@@ -531,8 +541,15 @@
 
   [#metadata(none)<numbering-preface-end>]
 
-  set par(leading: 1em, spacing: 2em)
-  set block(spacing: 2em)
+  // ANPASSUNG gegenueber supercharged-dhbw 3.5.0: Zeilenabstand 0.72em statt
+  // 1em, Absatz- und Blockabstand 1.05em statt 2em. Die Vorlage setzt den
+  // Hauptteil sehr luftig; bei einem Dokument, das fast nur aus kurzen
+  // Regelabsaetzen und Tabellen besteht, erzeugt das viel Leerraum. 0.72em
+  // liegt weiterhin ueber dem Typst-Standard (0.65em). Der Absatzabstand
+  // bleibt groesser als der Zeilenabstand, damit die Regeln trotz des
+  // engeren Satzes als einzelne Absaetze erkennbar bleiben.
+  set par(leading: 0.72em, spacing: 1.05em)
+  set block(spacing: 1.05em)
 
   // reset page numbering and set to main page numbering
   let main-numbering = "1 / 1"
@@ -566,6 +583,12 @@
   // hier einmal explizit gesetzt — sonst startet die Seitenzaehlung des
   // Hauptteils mitten auf der letzten Vorspannseite.
   pagebreak(weak: true)
+
+  // ANPASSUNG gegenueber supercharged-dhbw 3.5.0: Marke fuer den Beginn des
+  // Hauptteils. Die Kopfzeile oben blendet damit die Ueberschriften des
+  // Vorspanns aus; sonst stuende ueber der ersten Textseite das zuletzt
+  // gesetzte Verzeichnis.
+  [#metadata(none)<numbering-main-start>]
 
   body
 
