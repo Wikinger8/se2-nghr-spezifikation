@@ -19,34 +19,9 @@ Eine Gehaltsabrechnung befindet sich zu jedem Zeitpunkt in genau einem Zustand. 
 
 == Zustandsübergänge
 
-// Das Diagramm zeigt dieselben Uebergaenge wie die Tabelle darunter. Das
-// Vorlesungsskript laesst die Tabelle als Ergaenzung oder Alternative zum
-// Zustandsautomaten zu; beide stehen hier nebeneinander, weil die Tabelle die
-// Zuordnung Ereignis → Regel spaltenweise fuehrt.
+Der Zustandsautomat zeigt jeden Übergang mit dem auslösenden Ereignis, der Bedingung in eckigen Klammern und der ausgelösten Aktion hinter dem Schrägstrich. Das Vorlesungsskript lässt eine Tabelle als Ergänzung oder Alternative zu; dieses Dokument führt die Übergänge nur als Automaten, die zugehörigen Regeln stehen in Kapitel 3, 5 und 6.
+
 #figure(
-  caption: [Zustandsautomat der Gehaltsabrechnung. Das Ereignis „Gehaltslauf“ meint stets den Gehaltslauf des Abrechnungsmonats der Gehaltsabrechnung (R3.9, R3.11).],
+  caption: [Zustandsautomat der Gehaltsabrechnung. Das Ereignis „Gehaltslauf“ meint stets den Gehaltslauf des Abrechnungsmonats der Gehaltsabrechnung (R3.9, R3.11); für jeden Übergang nach „Gelöscht“ gelten R6.8 und R6.9.],
   image("../assets/zustandsdiagramm.svg", width: 100%),
 )
-
-// Diese Tabelle darf umbrechen (Ausnahme von der Regel in main.typ). Haelt man
-// sie zusammen, rutscht sie als Ganzes auf die naechste Seite und laesst die
-// Seite davor halb leer. Sie ist lang genug, dass beim Umbruch mehrere Zeilen
-// auf jeder Seite stehen; die Kopfzeile wiederholt sich.
-#[
-#show figure: set block(breakable: true)
-#figure(
-  caption: "Zustandsübergänge und ausgelöste Aktionen",
-  table(
-    columns: (1.25fr, 1fr, 1.15fr, 1.25fr, 0.75fr),
-    align: (left, left, left, left, left),
-    table.header([*Ereignis*], [*Zustand alt*], [*Zustand neu*], [*Aktion*], [*Regeln*]),
-    [Einstellung des Inlandsmitarbeiters], [–], [Angelegt (späterer Abrechnungsmonat aus Vertragsbeginn und Einführungsmonat seiner Gehaltsklasse)], [–], [R3.0, R3.1],
-    [Zeitpunkt nach R3.2 (spätestens Zahltag des Vormonats)], [–], [Angelegt (jeder Folgemonat nach R3.2)], [–], [R3.2],
-    [Gehaltslauf ihres Abrechnungsmonats; Mitarbeiter hat mindestens einen aktiven Tag], [Angelegt], [Erstellt (offen, ungemeldet)], [Lohnbuchungen zu den Steuerpositionen], [R3.9, R3.10, R5.1],
-    [Gehaltslauf ihres Abrechnungsmonats; Mitarbeiter hat keinen aktiven Tag], [Angelegt], [Entfallen], [–], [R3.11],
-    [Zahltag: Überweisungen ausgelöst], [Erstellt / offen], [Erstellt / ausgezahlt], [Lohnbuchungen zu den Zahlungsabflüssen], [R5.3–R5.7, R5.8],
-    [Steuermeldung gesendet], [Erstellt / ungemeldet], [Erstellt / gemeldet], [–], [R5.14],
-    [Löschzeitpunkt des Mitarbeiters erreicht], [Angelegt, Erstellt, Entfallen], [Gelöscht], [Löschung aller Daten des Mitarbeiters], [R6.8, R6.9],
-  ),
-)
-]

@@ -20,7 +20,7 @@ jobs:
         # Zeichenbreiten.
         #
         # ACHTUNG: Das Ergebnis ist NICHT seitengleich zum lokalen Build mit
-        # Arial. Der lokale Build auf macOS hat am 15.10.2026 17 Seiten; der
+        # Arial. Der lokale Build auf macOS hat am 16.10.2026 19 Seiten; der
         # Umfang dieser Action kann davon abweichen, auch der Seitenumbruch
         # innerhalb langer Tabellen. Das Artefakt dieser Action ist daher eine
         # eigene Fassung, keine Kopie des lokalen PDFs. Wer abgibt, sollte
@@ -40,20 +40,31 @@ jobs:
 
       - name: Vollstaendigkeit pruefen
         # Bricht den Build ab, wenn Regeln, Annahmen oder offene Punkte
-        # verloren gehen. Die Sollwerte stammen aus spec-source.md
-        # (NGHR – Fachliche Regeln, Stand 15.10.2026): 67 Regeln R3.1 bis
-        # R6.9, 13 Auslegungen/Annahmen A1 bis A13, 18 offene Punkte O1 bis
-        # O18. Testbeispiele und Rechenbeispiel sind nicht mehr Teil des
-        # Dokuments; die Berechnung steht als Formeltabelle in Abschnitt 4.3.
+        # verloren gehen. Stand 16.10.2026: 67 Regeln R3.0 bis R6.9
+        # (R3.6a bis R3.6c zaehlen als eine Nummer), 22 Auslegungen und
+        # Annahmen A1 bis A22, 22 offene Punkte O1 bis O22. Wer bewusst eine
+        # Regel, Annahme oder einen offenen Punkt ergaenzt oder streicht,
+        # zieht die Sollwerte hier mit.
         run: |
           regeln=$(grep -rhoE 'R[3-6]\.[0-9]+' chapters/ | sort -u | wc -l)
           annahmen=$(grep -rhoE '\[A[0-9]+\]' chapters/ | sort -u | wc -l)
           offene=$(grep -rhoE '\[O[0-9]+\]' chapters/ | sort -u | wc -l)
           echo "Regeln: $regeln (erwartet 67)"
-          echo "Auslegungen/Annahmen: $annahmen (erwartet 13)"
-          echo "Offene Punkte: $offene (erwartet 18)"
-          if [ "$regeln" -ne 67 ] || [ "$annahmen" -ne 13 ] || [ "$offene" -ne 18 ]; then
-            echo "::error::Anzahl weicht ab. Erwartet 67 Regeln, 13 Annahmen, 18 offene Punkte."
+          echo "Auslegungen/Annahmen: $annahmen (erwartet 22)"
+          echo "Offene Punkte: $offene (erwartet 22)"
+          if [ "$regeln" -ne 67 ] || [ "$annahmen" -ne 22 ] || [ "$offene" -ne 22 ]; then
+            echo "::error::Anzahl weicht ab. Erwartet 67 Regeln, 22 Annahmen, 22 offene Punkte."
+            exit 1
+          fi
+
+      - name: Quellen und Markdown-Spiegel abgleichen
+        # spec-source.md muss denselben Inhalt fuehren wie chapters/. Der
+        # Vergleich der Regel-IDs faengt den haeufigsten Fehler ab: eine Regel
+        # wird nur in einer der beiden Fassungen geaendert oder umnummeriert.
+        run: |
+          if ! diff <(grep -rhoE 'R[3-6]\.[0-9]+[a-c]?' chapters/ | sort -u) \
+                    <(grep -rhoE 'R[3-6]\.[0-9]+[a-c]?' spec-source.md | sort -u); then
+            echo "::error::chapters/ und spec-source.md fuehren verschiedene Regel-IDs."
             exit 1
           fi
 

@@ -138,19 +138,11 @@ Eine Gehaltsabrechnung befindet sich zu jedem Zeitpunkt in genau einem Zustand. 
 
 ### Zustandsübergänge
 
+Der Zustandsautomat zeigt jeden Übergang mit dem auslösenden Ereignis, der Bedingung in eckigen Klammern und der ausgelösten Aktion hinter dem Schrägstrich. Das Vorlesungsskript lässt eine Tabelle als Ergänzung oder Alternative zu; dieses Dokument führt die Übergänge nur als Automaten, die zugehörigen Regeln stehen in Kapitel 3, 5 und 6.
+
 ![Zustandsautomat der Gehaltsabrechnung](assets/zustandsdiagramm.svg)
 
-_Abbildung 1 — Zustandsautomat der Gehaltsabrechnung. Das Ereignis „Gehaltslauf“ meint stets den Gehaltslauf des Abrechnungsmonats der Gehaltsabrechnung (R3.9, R3.11)._
-
-| Ereignis | Zustand alt | Zustand neu | Aktion | Regeln |
-|---|---|---|---|---|
-| Einstellung des Inlandsmitarbeiters | – | Angelegt (späterer Abrechnungsmonat aus Vertragsbeginn und Einführungsmonat seiner Gehaltsklasse) | – | R3.0, R3.1 |
-| Zeitpunkt nach R3.2 (spätestens Zahltag des Vormonats) | – | Angelegt (jeder Folgemonat nach R3.2) | – | R3.2 |
-| Gehaltslauf ihres Abrechnungsmonats; Mitarbeiter hat mindestens einen aktiven Tag | Angelegt | Erstellt (offen, ungemeldet) | Lohnbuchungen zu den Steuerpositionen | R3.9, R3.10, R5.1 |
-| Gehaltslauf ihres Abrechnungsmonats; Mitarbeiter hat keinen aktiven Tag | Angelegt | Entfallen | – | R3.11 |
-| Zahltag: Überweisungen ausgelöst | Erstellt / offen | Erstellt / ausgezahlt | Lohnbuchungen zu den Zahlungsabflüssen | R5.3–R5.7, R5.8 |
-| Steuermeldung gesendet | Erstellt / ungemeldet | Erstellt / gemeldet | – | R5.14 |
-| Löschzeitpunkt des Mitarbeiters erreicht | Angelegt, Erstellt, Entfallen | Gelöscht | Löschung aller Daten des Mitarbeiters | R6.8, R6.9 |
+_Abbildung 1 — Zustandsautomat der Gehaltsabrechnung. Das Ereignis „Gehaltslauf“ meint stets den Gehaltslauf des Abrechnungsmonats der Gehaltsabrechnung (R3.9, R3.11); für jeden Übergang nach „Gelöscht“ gelten R6.8 und R6.9._
 
 ## 3 Erstellen: Anlegen und Gehaltslauf
 
