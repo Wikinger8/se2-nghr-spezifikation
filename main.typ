@@ -28,6 +28,10 @@
   // Kapitel 1 ist bereits ein vollstaendiges Begriffsverzeichnis, und die
   // Quellen des Fallbeispiels sind nicht bibliografisch zitierbar.
   show-acronyms: false,
+  // Das Dokument enthaelt genau eine Abbildung (den Zustandsautomaten); ein
+  // Verzeichnis mit einem Eintrag kostet eine Seite und bringt nichts. Das
+  // Tabellenverzeichnis bleibt, es fuehrt dreizehn Eintraege.
+  show-list-of-figures: false,
   // Der Kapitelname in der Kopfzeile funktioniert wieder, weil lib.typ in
   // dhbw-template/ denselben Offset wie die Nummerierung unten anwendet.
   header: (show-chapter: true),
