@@ -30,6 +30,10 @@
 
 Begriffe benennen die „Dinge“, auf die sich die Regeln beziehen. Alles, was sich ändern kann (Beträge, Termine, Rechenwege), steht nicht in der Definition, sondern in den Regeln. Erläuterungen sind nicht normativ.
 
+// Ohne Umbruch stuende die Beschriftung der ersten Begriffstabelle allein am
+// Fuss der Kapitelseite, die Tabelle begaenne erst auf der Folgeseite.
+#pagebreak()
+
 == Mitarbeiter und Gehaltsdaten
 
 #begriffe(

@@ -7,7 +7,7 @@
 *R3.1* Folgendes gilt, sobald die Einstellung eines Inlandsmitarbeiters erfolgt ist: Seine Gehaltsabrechnung für den späteren der beiden folgenden Abrechnungsmonate ist im Zustand „Angelegt“: (1) Abrechnungsmonat seines Vertragsbeginns, (2) Einführungsmonat seiner Gehaltsklasse. [→ A10, A14, A22]
 
 *R3.2* Für jeden Abrechnungsmonat eines Inlandsmitarbeiters, der auf den späteren der beiden Abrechnungsmonate (1) Abrechnungsmonat seines Vertragsbeginns, (2) Einführungsmonat seiner Gehaltsklasse folgt und in dem sein Arbeitsverhältnis an mindestens einem Kalendertag besteht, ist spätestens am Zahltag des Vormonats eine Gehaltsabrechnung im Zustand „Angelegt“. [WW → A10] \
-_Erläuterung: Der spätere der beiden Abrechnungsmonate ist durch R3.1 abgedeckt; Abrechnungsmonate davor bleiben in PZ (R3.5). Liegt ein angelegter Abrechnungsmonat nach einer Änderung außerhalb des Arbeitsverhältnisses, entfällt die Gehaltsabrechnung im Gehaltslauf (R3.12)._
+_Erläuterung: Der spätere der beiden Abrechnungsmonate ist durch R3.1 abgedeckt; Abrechnungsmonate davor bleiben in PZ (R3.5). Liegt ein angelegter Abrechnungsmonat nach einer Änderung außerhalb des Arbeitsverhältnisses, entfällt die Gehaltsabrechnung im Gehaltslauf (R3.11)._
 
 *R3.3* Für jeden Mitarbeiter existiert je Abrechnungsmonat höchstens eine Gehaltsabrechnung. [WW]
 
@@ -31,34 +31,34 @@ _Erläuterung: Gehaltsabrechnungen früherer Abrechnungsmonate verbleiben in PZ 
 
 == Erstellt oder entfallen
 
-*R3.10* Im Gehaltslauf eines Abrechnungsmonats erstellt NGHR jede angelegte Gehaltsabrechnung dieses Abrechnungsmonats, deren Mitarbeiter in diesem Abrechnungsmonat mindestens einen aktiven Tag hat. [RR, WW]
+*R3.9* Im Gehaltslauf eines Abrechnungsmonats erstellt NGHR jede angelegte Gehaltsabrechnung dieses Abrechnungsmonats, deren Mitarbeiter in diesem Abrechnungsmonat mindestens einen aktiven Tag hat. [RR, WW]
 
-*R3.11* Eine Gehaltsabrechnung ist nach ihrer Erstellung im Zustand „Erstellt“ mit Zahlungsstatus „offen“ und Meldestatus „ungemeldet“. [RR, WW]
+*R3.10* Eine Gehaltsabrechnung ist nach ihrer Erstellung im Zustand „Erstellt“ mit Zahlungsstatus „offen“ und Meldestatus „ungemeldet“. [RR, WW]
 
-*R3.12* Eine angelegte Gehaltsabrechnung, deren Mitarbeiter in ihrem Abrechnungsmonat keinen aktiven Tag hat, ist nach dem Gehaltslauf ihres Abrechnungsmonats im Zustand „Entfallen“. [RR, LL] \
+*R3.11* Eine angelegte Gehaltsabrechnung, deren Mitarbeiter in ihrem Abrechnungsmonat keinen aktiven Tag hat, ist nach dem Gehaltslauf ihres Abrechnungsmonats im Zustand „Entfallen“. [RR, LL] \
 _Erläuterung: Betrifft entsendete Mitarbeiter (die ausländische Tochtergesellschaft zahlt, RR) und inaktive Mitarbeiter (Sabbatical, Freistellung, längere Krankheit, LL)._
 
-*R3.13* Der Inhalt einer Gehaltsabrechnung im Zustand „Erstellt“ ändert sich nicht. [→ A16, O3]
+*R3.12* Der Inhalt einer Gehaltsabrechnung im Zustand „Erstellt“ ändert sich nicht. [→ A16, O3]
 
 == Eingangsdaten
 
-Die Pflege von Mitarbeiterstatus, Gehaltsdaten und Kostenstellen-Zuordnung ist nicht Gegenstand dieses Dokuments. Die Regeln R3.14 bis R3.17 legen fest, welche Eigenschaften dieser Daten die Gehaltsabrechnung voraussetzt; R3.18 bis R3.21 legen fest, welcher Datenstand gilt.
+Die Pflege von Mitarbeiterstatus, Gehaltsdaten und Kostenstellen-Zuordnung ist nicht Gegenstand dieses Dokuments. Die Regeln R3.13 bis R3.16 legen fest, welche Eigenschaften dieser Daten die Gehaltsabrechnung voraussetzt; R3.17 bis R3.20 legen fest, welcher Datenstand gilt.
 
-*R3.14* An Kalendertagen außerhalb seines Arbeitsverhältnisses ist der Mitarbeiterstatus eines Mitarbeiters nicht „aktiv“. [LL]
+*R3.13* An Kalendertagen außerhalb seines Arbeitsverhältnisses ist der Mitarbeiterstatus eines Mitarbeiters nicht „aktiv“. [LL]
 
-*R3.15* Kündigung und Auflösungsvertrag ändern den Mitarbeiterstatus nicht. [LL] \
+*R3.14* Kündigung und Auflösungsvertrag ändern den Mitarbeiterstatus nicht. [LL] \
 _Erläuterung: Eine Kündigung oder ein Auflösungsvertrag allein führt daher nicht dazu, dass eine Gehaltsabrechnung vor dem Vertragsende entfällt._
 
-*R3.16* Jeder Mitarbeiter ist genau einer Gehaltsklasse zugeordnet. [WW]
+*R3.15* Jeder Mitarbeiter ist genau einer Gehaltsklasse zugeordnet. [WW]
 
-*R3.17* Jeder Manager ist der Gehaltsklasse „Gehalt und Bonus“ zugeordnet, auch wenn er im Vertrieb arbeitet. [WW → O18] \
+*R3.16* Jeder Manager ist der Gehaltsklasse „Gehalt und Bonus“ zugeordnet, auch wenn er im Vertrieb arbeitet. [WW → O18] \
 _Erläuterung: Ein Manager im Vertrieb erhält daher keine Provision._
 
-*R3.18* Die Gehaltsdaten einer Gehaltsabrechnung sind die Gehaltsdaten, die zu Beginn ihres Gehaltslaufs in NGHR hinterlegt sind. [WW → A2]
+*R3.17* Die Gehaltsdaten einer Gehaltsabrechnung sind die Gehaltsdaten, die zu Beginn ihres Gehaltslaufs in NGHR hinterlegt sind. [WW → A2]
 
-*R3.19* Der Mitarbeiterstatus einer Gehaltsabrechnung ist für jeden Kalendertag ihres Abrechnungsmonats der Wert, der zu Beginn ihres Gehaltslaufs in NGHR für diesen Kalendertag hinterlegt ist. [RR, LL → A2] \
+*R3.18* Der Mitarbeiterstatus einer Gehaltsabrechnung ist für jeden Kalendertag ihres Abrechnungsmonats der Wert, der zu Beginn ihres Gehaltslaufs in NGHR für diesen Kalendertag hinterlegt ist. [RR, LL → A2] \
 _Erläuterung: Das gilt auch für die Kalendertage nach dem Gehaltslauf._
 
-*R3.20* Die Kostenstelle einer Gehaltsabrechnung ist die Kostenstelle, der der Mitarbeiter zu Beginn ihres Gehaltslaufs zugeordnet ist. [PP → A3, O4]
+*R3.19* Die Kostenstelle einer Gehaltsabrechnung ist die Kostenstelle, der der Mitarbeiter zu Beginn ihres Gehaltslaufs zugeordnet ist. [PP → A3, O4]
 
-*R3.21* NGHR übernimmt die Zuordnung der Mitarbeiter zu Kostenstellen aus dem ERP-System. [PP]
+*R3.20* NGHR übernimmt die Zuordnung der Mitarbeiter zu Kostenstellen aus dem ERP-System. [PP]

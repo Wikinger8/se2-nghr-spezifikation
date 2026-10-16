@@ -143,11 +143,19 @@
   }
 
   // university
+  // ANPASSUNG: Nach "an der " steht der Name im Deutschen im Dativ ("an der
+  // Dualen Hochschule Baden-Wuerttemberg"). Die Vorlage setzt den Namen
+  // unveraendert ein und erzeugt damit "an der Duale Hochschule".
+  let university-inflected = if (language == "de" and type(university) == str) {
+    university.replace(regex("^Duale\\b"), "Dualen")
+  } else {
+    university
+  }
   align(
     center,
     text(
       1.2em,
-      TITLEPAGE_SECTION_C.at(language) + university + [ ] + university-location,
+      TITLEPAGE_SECTION_C.at(language) + university-inflected + [ ] + university-location,
     ),
   )
 

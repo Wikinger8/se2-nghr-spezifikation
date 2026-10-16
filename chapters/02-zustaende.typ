@@ -9,15 +9,24 @@ Eine Gehaltsabrechnung befindet sich zu jedem Zeitpunkt in genau einem Zustand. 
     align: (left, left, left),
     table.header([*Zustand / Merkmal*], [*Bedeutung*], [*Regeln*]),
     [Angelegt], [Die Gehaltsabrechnung existiert für Mitarbeiter und Abrechnungsmonat, enthält aber noch keine Gehaltspositionen (Anfangszustand).], [R3.1, R3.2],
-    [Erstellt], [Alle Gehaltspositionen sind berechnet; der Inhalt ist endgültig.], [R3.10, R3.11, R3.13],
+    [Erstellt], [Alle Gehaltspositionen sind berechnet; der Inhalt ist endgültig.], [R3.9, R3.10, R3.12],
     [– Zahlungsstatus], [„offen“: Die Überweisungen nach R5.3 und R5.4 sind noch nicht ausgelöst. „ausgezahlt“: Sie sind ausgelöst.], [R5.7],
-    [– Meldestatus], [„ungemeldet“: Das Bruttogehalt ist in keiner Steuermeldung berücksichtigt. „gemeldet“: Es ist in einer Steuermeldung berücksichtigt.], [R5.13, R5.15],
-    [Entfallen], [Der Mitarbeiter hat im Abrechnungsmonat keinen aktiven Tag. Die Gehaltsabrechnung bleibt ohne Gehaltspositionen; NGHR zahlt nichts. Ob der Mitarbeiter in der Steuermeldung erscheint, ist offen (O22).], [R3.12],
+    [– Meldestatus], [„ungemeldet“: Das Bruttogehalt ist in keiner Steuermeldung berücksichtigt. „gemeldet“: Es ist in einer Steuermeldung berücksichtigt.], [R5.12, R5.14],
+    [Entfallen], [Der Mitarbeiter hat im Abrechnungsmonat keinen aktiven Tag. Die Gehaltsabrechnung bleibt ohne Gehaltspositionen; NGHR zahlt nichts. Ob der Mitarbeiter in der Steuermeldung erscheint, ist offen (O22).], [R3.11],
     [Gelöscht], [Die Gehaltsabrechnung ist mit allen Daten des Mitarbeiters gelöscht (Endzustand).], [R6.8, R6.9],
   ),
 )
 
 == Zustandsübergänge
+
+// Das Diagramm zeigt dieselben Uebergaenge wie die Tabelle darunter. Das
+// Vorlesungsskript laesst die Tabelle als Ergaenzung oder Alternative zum
+// Zustandsautomaten zu; beide stehen hier nebeneinander, weil die Tabelle die
+// Zuordnung Ereignis → Regel spaltenweise fuehrt.
+#figure(
+  caption: [Zustandsautomat der Gehaltsabrechnung. Das Ereignis „Gehaltslauf“ meint stets den Gehaltslauf des Abrechnungsmonats der Gehaltsabrechnung (R3.9, R3.11).],
+  image("../assets/zustandsdiagramm.svg", width: 100%),
+)
 
 // Diese Tabelle darf umbrechen (Ausnahme von der Regel in main.typ). Haelt man
 // sie zusammen, rutscht sie als Ganzes auf die naechste Seite und laesst die
@@ -33,10 +42,10 @@ Eine Gehaltsabrechnung befindet sich zu jedem Zeitpunkt in genau einem Zustand. 
     table.header([*Ereignis*], [*Zustand alt*], [*Zustand neu*], [*Aktion*], [*Regeln*]),
     [Einstellung des Inlandsmitarbeiters], [–], [Angelegt (späterer Abrechnungsmonat aus Vertragsbeginn und Einführungsmonat seiner Gehaltsklasse)], [–], [R3.0, R3.1],
     [Zeitpunkt nach R3.2 (spätestens Zahltag des Vormonats)], [–], [Angelegt (jeder Folgemonat nach R3.2)], [–], [R3.2],
-    [Gehaltslauf ihres Abrechnungsmonats; Mitarbeiter hat mindestens einen aktiven Tag], [Angelegt], [Erstellt (offen, ungemeldet)], [Lohnbuchungen zu den Steuerpositionen], [R3.10, R3.11, R5.1],
-    [Gehaltslauf ihres Abrechnungsmonats; Mitarbeiter hat keinen aktiven Tag], [Angelegt], [Entfallen], [–], [R3.12],
+    [Gehaltslauf ihres Abrechnungsmonats; Mitarbeiter hat mindestens einen aktiven Tag], [Angelegt], [Erstellt (offen, ungemeldet)], [Lohnbuchungen zu den Steuerpositionen], [R3.9, R3.10, R5.1],
+    [Gehaltslauf ihres Abrechnungsmonats; Mitarbeiter hat keinen aktiven Tag], [Angelegt], [Entfallen], [–], [R3.11],
     [Zahltag: Überweisungen ausgelöst], [Erstellt / offen], [Erstellt / ausgezahlt], [Lohnbuchungen zu den Zahlungsabflüssen], [R5.3–R5.7, R5.8],
-    [Steuermeldung gesendet], [Erstellt / ungemeldet], [Erstellt / gemeldet], [–], [R5.15],
+    [Steuermeldung gesendet], [Erstellt / ungemeldet], [Erstellt / gemeldet], [–], [R5.14],
     [Löschzeitpunkt des Mitarbeiters erreicht], [Angelegt, Erstellt, Entfallen], [Gelöscht], [Löschung aller Daten des Mitarbeiters], [R6.8, R6.9],
   ),
 )

@@ -42,7 +42,7 @@ _Erläuterung: Für März: 16.02. bis 15.03. Ein Kundenvertrag vom 15.02. zählt
 
 *R4.15* Der kumulierte Soli einer Gehaltsabrechnung beträgt 5,5 % ihrer kumulierten ESt, sofern diese mindestens 18.000 € beträgt; andernfalls 0 €. [KK → A7]
 
-*R4.16* Die Steuerposition „Solidaritätszuschlag“ beträgt der kumulierte Soli abzüglich des Solidaritätszuschlags aller früheren Gehaltsabrechnungen. [KK → A7]
+*R4.16* Die Steuerposition „Solidaritätszuschlag“ beträgt den kumulierten Soli abzüglich des Solidaritätszuschlags aller früheren Gehaltsabrechnungen. [KK → A7]
 
 *R4.17* Das Nettogehalt ist das Bruttogehalt abzüglich Einkommensteuer und Solidaritätszuschlag. [WW]
 

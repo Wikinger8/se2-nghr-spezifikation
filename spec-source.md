@@ -130,22 +130,26 @@ Eine Gehaltsabrechnung befindet sich zu jedem Zeitpunkt in genau einem Zustand. 
 | Zustand / Merkmal | Bedeutung | Regeln |
 |---|---|---|
 | Angelegt | Die Gehaltsabrechnung existiert für Mitarbeiter und Abrechnungsmonat, enthält aber noch keine Gehaltspositionen (Anfangszustand). | R3.1, R3.2 |
-| Erstellt | Alle Gehaltspositionen sind berechnet; der Inhalt ist endgültig. | R3.10, R3.11, R3.13 |
+| Erstellt | Alle Gehaltspositionen sind berechnet; der Inhalt ist endgültig. | R3.9, R3.10, R3.12 |
 | – Zahlungsstatus | „offen“: Die Überweisungen nach R5.3 und R5.4 sind noch nicht ausgelöst. „ausgezahlt“: Sie sind ausgelöst. | R5.7 |
-| – Meldestatus | „ungemeldet“: Das Bruttogehalt ist in keiner Steuermeldung berücksichtigt. „gemeldet“: Es ist in einer Steuermeldung berücksichtigt. | R5.13, R5.15 |
-| Entfallen | Der Mitarbeiter hat im Abrechnungsmonat keinen aktiven Tag. Die Gehaltsabrechnung bleibt ohne Gehaltspositionen; NGHR zahlt nichts. Ob der Mitarbeiter in der Steuermeldung erscheint, ist offen (O22). | R3.12 |
+| – Meldestatus | „ungemeldet“: Das Bruttogehalt ist in keiner Steuermeldung berücksichtigt. „gemeldet“: Es ist in einer Steuermeldung berücksichtigt. | R5.12, R5.14 |
+| Entfallen | Der Mitarbeiter hat im Abrechnungsmonat keinen aktiven Tag. Die Gehaltsabrechnung bleibt ohne Gehaltspositionen; NGHR zahlt nichts. Ob der Mitarbeiter in der Steuermeldung erscheint, ist offen (O22). | R3.11 |
 | Gelöscht | Die Gehaltsabrechnung ist mit allen Daten des Mitarbeiters gelöscht (Endzustand). | R6.8, R6.9 |
 
 ### Zustandsübergänge
+
+![Zustandsautomat der Gehaltsabrechnung](assets/zustandsdiagramm.svg)
+
+_Abbildung 1 — Zustandsautomat der Gehaltsabrechnung. Das Ereignis „Gehaltslauf“ meint stets den Gehaltslauf des Abrechnungsmonats der Gehaltsabrechnung (R3.9, R3.11)._
 
 | Ereignis | Zustand alt | Zustand neu | Aktion | Regeln |
 |---|---|---|---|---|
 | Einstellung des Inlandsmitarbeiters | – | Angelegt (späterer Abrechnungsmonat aus Vertragsbeginn und Einführungsmonat seiner Gehaltsklasse) | – | R3.0, R3.1 |
 | Zeitpunkt nach R3.2 (spätestens Zahltag des Vormonats) | – | Angelegt (jeder Folgemonat nach R3.2) | – | R3.2 |
-| Gehaltslauf ihres Abrechnungsmonats; Mitarbeiter hat mindestens einen aktiven Tag | Angelegt | Erstellt (offen, ungemeldet) | Lohnbuchungen zu den Steuerpositionen | R3.10, R3.11, R5.1 |
-| Gehaltslauf ihres Abrechnungsmonats; Mitarbeiter hat keinen aktiven Tag | Angelegt | Entfallen | – | R3.12 |
+| Gehaltslauf ihres Abrechnungsmonats; Mitarbeiter hat mindestens einen aktiven Tag | Angelegt | Erstellt (offen, ungemeldet) | Lohnbuchungen zu den Steuerpositionen | R3.9, R3.10, R5.1 |
+| Gehaltslauf ihres Abrechnungsmonats; Mitarbeiter hat keinen aktiven Tag | Angelegt | Entfallen | – | R3.11 |
 | Zahltag: Überweisungen ausgelöst | Erstellt / offen | Erstellt / ausgezahlt | Lohnbuchungen zu den Zahlungsabflüssen | R5.3–R5.7, R5.8 |
-| Steuermeldung gesendet | Erstellt / ungemeldet | Erstellt / gemeldet | – | R5.15 |
+| Steuermeldung gesendet | Erstellt / ungemeldet | Erstellt / gemeldet | – | R5.14 |
 | Löschzeitpunkt des Mitarbeiters erreicht | Angelegt, Erstellt, Entfallen | Gelöscht | Löschung aller Daten des Mitarbeiters | R6.8, R6.9 |
 
 ## 3 Erstellen: Anlegen und Gehaltslauf
@@ -158,7 +162,7 @@ Eine Gehaltsabrechnung befindet sich zu jedem Zeitpunkt in genau einem Zustand. 
 
 **R3.2** Für jeden Abrechnungsmonat eines Inlandsmitarbeiters, der auf den späteren der beiden Abrechnungsmonate (1) Abrechnungsmonat seines Vertragsbeginns, (2) Einführungsmonat seiner Gehaltsklasse folgt und in dem sein Arbeitsverhältnis an mindestens einem Kalendertag besteht, ist spätestens am Zahltag des Vormonats eine Gehaltsabrechnung im Zustand „Angelegt“. [WW → A10]
 
-_Erläuterung: Der spätere der beiden Abrechnungsmonate ist durch R3.1 abgedeckt; Abrechnungsmonate davor bleiben in PZ (R3.5). Liegt ein angelegter Abrechnungsmonat nach einer Änderung außerhalb des Arbeitsverhältnisses, entfällt die Gehaltsabrechnung im Gehaltslauf (R3.12)._
+_Erläuterung: Der spätere der beiden Abrechnungsmonate ist durch R3.1 abgedeckt; Abrechnungsmonate davor bleiben in PZ (R3.5). Liegt ein angelegter Abrechnungsmonat nach einer Änderung außerhalb des Arbeitsverhältnisses, entfällt die Gehaltsabrechnung im Gehaltslauf (R3.11)._
 
 **R3.3** Für jeden Mitarbeiter existiert je Abrechnungsmonat höchstens eine Gehaltsabrechnung. [WW]
 
@@ -184,41 +188,41 @@ _Erläuterung: Gehaltsabrechnungen früherer Abrechnungsmonate verbleiben in PZ 
 
 ### 3.3 Erstellt oder entfallen
 
-**R3.10** Im Gehaltslauf eines Abrechnungsmonats erstellt NGHR jede angelegte Gehaltsabrechnung dieses Abrechnungsmonats, deren Mitarbeiter in diesem Abrechnungsmonat mindestens einen aktiven Tag hat. [RR, WW]
+**R3.9** Im Gehaltslauf eines Abrechnungsmonats erstellt NGHR jede angelegte Gehaltsabrechnung dieses Abrechnungsmonats, deren Mitarbeiter in diesem Abrechnungsmonat mindestens einen aktiven Tag hat. [RR, WW]
 
-**R3.11** Eine Gehaltsabrechnung ist nach ihrer Erstellung im Zustand „Erstellt“ mit Zahlungsstatus „offen“ und Meldestatus „ungemeldet“. [RR, WW]
+**R3.10** Eine Gehaltsabrechnung ist nach ihrer Erstellung im Zustand „Erstellt“ mit Zahlungsstatus „offen“ und Meldestatus „ungemeldet“. [RR, WW]
 
-**R3.12** Eine angelegte Gehaltsabrechnung, deren Mitarbeiter in ihrem Abrechnungsmonat keinen aktiven Tag hat, ist nach dem Gehaltslauf ihres Abrechnungsmonats im Zustand „Entfallen“. [RR, LL]
+**R3.11** Eine angelegte Gehaltsabrechnung, deren Mitarbeiter in ihrem Abrechnungsmonat keinen aktiven Tag hat, ist nach dem Gehaltslauf ihres Abrechnungsmonats im Zustand „Entfallen“. [RR, LL]
 
 _Erläuterung: Betrifft entsendete Mitarbeiter (die ausländische Tochtergesellschaft zahlt, RR) und inaktive Mitarbeiter (Sabbatical, Freistellung, längere Krankheit, LL)._
 
-**R3.13** Der Inhalt einer Gehaltsabrechnung im Zustand „Erstellt“ ändert sich nicht. [→ A16, O3]
+**R3.12** Der Inhalt einer Gehaltsabrechnung im Zustand „Erstellt“ ändert sich nicht. [→ A16, O3]
 
 ### 3.4 Eingangsdaten
 
-Die Pflege von Mitarbeiterstatus, Gehaltsdaten und Kostenstellen-Zuordnung ist nicht Gegenstand dieses Dokuments. Die Regeln R3.14 bis R3.17 legen fest, welche Eigenschaften dieser Daten die Gehaltsabrechnung voraussetzt; R3.18 bis R3.21 legen fest, welcher Datenstand gilt.
+Die Pflege von Mitarbeiterstatus, Gehaltsdaten und Kostenstellen-Zuordnung ist nicht Gegenstand dieses Dokuments. Die Regeln R3.13 bis R3.16 legen fest, welche Eigenschaften dieser Daten die Gehaltsabrechnung voraussetzt; R3.17 bis R3.20 legen fest, welcher Datenstand gilt.
 
-**R3.14** An Kalendertagen außerhalb seines Arbeitsverhältnisses ist der Mitarbeiterstatus eines Mitarbeiters nicht „aktiv“. [LL]
+**R3.13** An Kalendertagen außerhalb seines Arbeitsverhältnisses ist der Mitarbeiterstatus eines Mitarbeiters nicht „aktiv“. [LL]
 
-**R3.15** Kündigung und Auflösungsvertrag ändern den Mitarbeiterstatus nicht. [LL]
+**R3.14** Kündigung und Auflösungsvertrag ändern den Mitarbeiterstatus nicht. [LL]
 
 _Erläuterung: Eine Kündigung oder ein Auflösungsvertrag allein führt daher nicht dazu, dass eine Gehaltsabrechnung vor dem Vertragsende entfällt._
 
-**R3.16** Jeder Mitarbeiter ist genau einer Gehaltsklasse zugeordnet. [WW]
+**R3.15** Jeder Mitarbeiter ist genau einer Gehaltsklasse zugeordnet. [WW]
 
-**R3.17** Jeder Manager ist der Gehaltsklasse „Gehalt und Bonus“ zugeordnet, auch wenn er im Vertrieb arbeitet. [WW → O18]
+**R3.16** Jeder Manager ist der Gehaltsklasse „Gehalt und Bonus“ zugeordnet, auch wenn er im Vertrieb arbeitet. [WW → O18]
 
 _Erläuterung: Ein Manager im Vertrieb erhält daher keine Provision._
 
-**R3.18** Die Gehaltsdaten einer Gehaltsabrechnung sind die Gehaltsdaten, die zu Beginn ihres Gehaltslaufs in NGHR hinterlegt sind. [WW → A2]
+**R3.17** Die Gehaltsdaten einer Gehaltsabrechnung sind die Gehaltsdaten, die zu Beginn ihres Gehaltslaufs in NGHR hinterlegt sind. [WW → A2]
 
-**R3.19** Der Mitarbeiterstatus einer Gehaltsabrechnung ist für jeden Kalendertag ihres Abrechnungsmonats der Wert, der zu Beginn ihres Gehaltslaufs in NGHR für diesen Kalendertag hinterlegt ist. [RR, LL → A2]
+**R3.18** Der Mitarbeiterstatus einer Gehaltsabrechnung ist für jeden Kalendertag ihres Abrechnungsmonats der Wert, der zu Beginn ihres Gehaltslaufs in NGHR für diesen Kalendertag hinterlegt ist. [RR, LL → A2]
 
 _Erläuterung: Das gilt auch für die Kalendertage nach dem Gehaltslauf._
 
-**R3.20** Die Kostenstelle einer Gehaltsabrechnung ist die Kostenstelle, der der Mitarbeiter zu Beginn ihres Gehaltslaufs zugeordnet ist. [PP → A3, O4]
+**R3.19** Die Kostenstelle einer Gehaltsabrechnung ist die Kostenstelle, der der Mitarbeiter zu Beginn ihres Gehaltslaufs zugeordnet ist. [PP → A3, O4]
 
-**R3.21** NGHR übernimmt die Zuordnung der Mitarbeiter zu Kostenstellen aus dem ERP-System. [PP]
+**R3.20** NGHR übernimmt die Zuordnung der Mitarbeiter zu Kostenstellen aus dem ERP-System. [PP]
 
 ## 4 Erstellen: Inhalt der Gehaltsabrechnung
 
@@ -333,17 +337,17 @@ _Erläuterung: Das Betriebsfinanzamt zieht die Steuern auf Grundlage der Steuerm
 
 **R5.9** NGHR meldet dem ERP-System alle Lohnbuchungen mit demselben Buchungsdatum gemeinsam in genau einer Meldung an diesem Buchungsdatum. [KK → A11]
 
-**R5.11** Jede Lohnbuchung ist dem ERP-System genau einmal gemeldet. [KK]
+**R5.10** Jede Lohnbuchung ist dem ERP-System genau einmal gemeldet. [KK]
 
 ### 5.4 Steuermeldung an das Betriebsfinanzamt
 
-**R5.12** NGHR sendet für jedes Meldequartal spätestens am 10. Tag nach Quartalsende (10.04., 10.07., 10.10., 10.01.) eine Steuermeldung per Elster an das Betriebsfinanzamt. [KK]
+**R5.11** NGHR sendet für jedes Meldequartal spätestens am 10. Tag nach Quartalsende (10.04., 10.07., 10.10., 10.01.) eine Steuermeldung per Elster an das Betriebsfinanzamt. [KK]
 
-**R5.13** Eine Steuermeldung berücksichtigt jede erstellte Gehaltsabrechnung mit Meldestatus „ungemeldet“, deren Meldequartal abgeschlossen ist, unabhängig vom Zahlungsstatus. [KK → A11]
+**R5.12** Eine Steuermeldung berücksichtigt jede erstellte Gehaltsabrechnung mit Meldestatus „ungemeldet“, deren Meldequartal abgeschlossen ist, unabhängig vom Zahlungsstatus. [KK → A11]
 
-**R5.14** Eine Steuermeldung weist je Mitarbeiter und Meldequartal die Steuer-ID und das Quartalsbruttoeinkommen aus. [KK → A18, O22]
+**R5.13** Eine Steuermeldung weist je Mitarbeiter und Meldequartal die Steuer-ID und das Quartalsbruttoeinkommen aus. [KK → A18, O22]
 
-**R5.15** Sobald eine Steuermeldung gesendet ist, ist der Meldestatus jeder darin berücksichtigten Gehaltsabrechnung „gemeldet“. [KK]
+**R5.14** Sobald eine Steuermeldung gesendet ist, ist der Meldestatus jeder darin berücksichtigten Gehaltsabrechnung „gemeldet“. [KK]
 
 ## 6 Abarbeiten: Einsicht und Löschung
 
@@ -386,8 +390,8 @@ Die Spezifikation enthält nur, was das Fallbeispiel nennt. Auslegungen legen fe
 | Nr. | Art | Auslegung bzw. Annahme und Grundlage | Regeln |
 |---|---|---|---|
 | A1 | Annahme | Teilmonat: Das Grundgehalt wird anteilig nach aktiven Kalendertagen berechnet, Provision und Bonus ungekürzt. Grundlage: Gehalt erhalten nur aktive Mitarbeiter (RR, WW); Vertragsbeginn und -ende können mitten im Monat liegen (LL). Das Fallbeispiel nennt kein Verfahren; Arbeitstage oder ein 30-Tage-Monat wären ebenfalls denkbar. Mit der Lohnbuchhaltung zu bestätigen. | R4.2, R4.6 |
-| A2 | Auslegung | Maßgeblich ist der Datenstand zu Beginn des Gehaltslaufs, auch für die restlichen Kalendertage des Abrechnungsmonats. Grundlage: Der Gehaltslauf findet vor Monatsende statt (R3.6c). | R3.18, R3.19, R3.20 |
-| A3 | Annahme | Die Kostenstelle einer Gehaltsabrechnung ist die Kostenstelle zu Beginn des Gehaltslaufs. Grundlage: PP ordnet tagesgenau zu, die Lohnbuchung (KK) nennt genau eine Kostenstelle; der Datenstand folgt A2. Mit dem Controlling zu bestätigen. | R3.20 |
+| A2 | Auslegung | Maßgeblich ist der Datenstand zu Beginn des Gehaltslaufs, auch für die restlichen Kalendertage des Abrechnungsmonats. Grundlage: Der Gehaltslauf findet vor Monatsende statt (R3.6c). | R3.17, R3.18, R3.19 |
+| A3 | Annahme | Die Kostenstelle einer Gehaltsabrechnung ist die Kostenstelle zu Beginn des Gehaltslaufs. Grundlage: PP ordnet tagesgenau zu, die Lohnbuchung (KK) nennt genau eine Kostenstelle; der Datenstand folgt A2. Mit dem Controlling zu bestätigen. | R3.19 |
 | A4 | Auslegung | Der Gehaltslauf liegt zwischen Ende des Provisionszeitraums und Zahltag. Grundlage: WW (Provisionszeitraum bis 15.), RR („vor jedem Gehaltslauf“, „pünktlich“). | R3.6b, R3.6c |
 | A5 | Auslegung | Beide Grenztage gehören zum Provisionszeitraum; maßgeblich ist das Abschlussdatum. Grundlage: WW „zwischen dem 16. … und dem 15.“; so schließen die Zeiträume lückenlos an. | R4.4 |
 | A6 | Auslegung | Bemessungsgrundlage des Bonus ist das Monatsgehalt der Mai-Gehaltsabrechnung. Grundlage: WW „Prozent des monatlichen Bruttogehalts … mit dem Gehalt vom Mai ausbezahlt“. | R4.8 |
@@ -395,14 +399,14 @@ Die Spezifikation enthält nur, was das Fallbeispiel nennt. Auslegungen legen fe
 | A8 | Auslegung | „Gesetzlicher Bruttoverdienst“ (WW) ist das Bruttogehalt einschließlich Provision und Bonus; die BBM gilt kumuliert je Kalenderjahr (WW: „Jahresbruttogehalt“). | R4.18 |
 | A9 | Annahme | Ein Wochentag ist ein Kalendertag von Montag bis Freitag. Grundlage: WW „letzter Wochentag eines Monats“; der Begriff lässt auch die Lesart Montag bis Samstag zu. Mit der Lohnbuchhaltung zu bestätigen. | Begriff Wochentag, R5.2 |
 | A10 | Annahme | Die erste Gehaltsabrechnung eines Inlandsmitarbeiters wird bei seiner Einstellung ohne Gehaltspositionen angelegt (R3.1); für jeden späteren Abrechnungsmonat spätestens am Zahltag des Vormonats (R3.2). Das Fallbeispiel nennt keinen Zeitpunkt der Erzeugung. Mit der Lohnbuchhaltung zu bestätigen. | R3.1, R3.2 |
-| A11 | Auslegung | Steuern werden wie Zahlungsabflüsse als Lohnbuchungen gemeldet (KK: „als ob diese monatlich abfließen“), mit Steuer-ID für den Abgleich (KK). | R5.1, R5.9, R5.13 |
+| A11 | Auslegung | Steuern werden wie Zahlungsabflüsse als Lohnbuchungen gemeldet (KK: „als ob diese monatlich abfließen“), mit Steuer-ID für den Abgleich (KK). | R5.1, R5.9, R5.12 |
 | A12 | Auslegung | „Letzte Gehaltszahlung“ (II) ist die letzte Überweisung eines Auszahlungsbetrags. Ohne Sterbedatum tritt der Löschzeitpunkt nicht ein (wörtliche Lesart „zu dem späteren Zeitpunkt“). | R6.7 |
-| A13 | Auslegung | „Gehaltsdaten“ sind Gehaltsklasse und Monatsgehalt (WW: „Das sind Gehaltsklasse und monatliches Bruttogehalt“). II verwendet den Begriff weiter („alle Daten, die zur Erstellung der Gehaltsabrechnung nötig sind“). Die Regeln dieses Dokuments verwenden die Lesart von WW; die Einsichtsregel R6.1 betrifft nur Gehaltsabrechnungen und hängt nicht davon ab. | Begriff Gehaltsdaten, R3.18 |
+| A13 | Auslegung | „Gehaltsdaten“ sind Gehaltsklasse und Monatsgehalt (WW: „Das sind Gehaltsklasse und monatliches Bruttogehalt“). II verwendet den Begriff weiter („alle Daten, die zur Erstellung der Gehaltsabrechnung nötig sind“). Die Regeln dieses Dokuments verwenden die Lesart von WW; die Einsichtsregel R6.1 betrifft nur Gehaltsabrechnungen und hängt nicht davon ab. | Begriff Gehaltsdaten, R3.17 |
 | A14 | Annahme | Die Einführungsmonate können je Gehaltsklasse verschieden sein. Grundlage: SCH führt NGHR in Phasen ein und lässt alte Gehaltsabrechnungen in PZ; eine Aufteilung nach Gehaltsklassen und die konkreten Monate nennt das Fallbeispiel nicht. Mit der Personalvorständin zu bestätigen. | Begriff Einführungsmonat, R3.1, R3.5 |
 | A15 | Annahme | NGHR überweist die SV-Beiträge am Zahltag. Grundlage: KK (NGHR überweist Gehälter und Sozialabgaben selbst); einen Termin für Sozialabgaben nennt das Fallbeispiel nicht. Mit der Buchhaltung zu bestätigen. | R5.4 |
-| A16 | Annahme | Der Inhalt einer erstellten Gehaltsabrechnung ändert sich nicht. Das Fallbeispiel nennt weder Unveränderlichkeit noch ein Korrekturverfahren (O3). Mit der Lohnbuchhaltung zu bestätigen. | R3.13 |
+| A16 | Annahme | Der Inhalt einer erstellten Gehaltsabrechnung ändert sich nicht. Das Fallbeispiel nennt weder Unveränderlichkeit noch ein Korrekturverfahren (O3). Mit der Lohnbuchhaltung zu bestätigen. | R3.12 |
 | A17 | Annahme | Je Abrechnungsmonat findet genau ein Gehaltslauf statt. Grundlage: RR spricht von Gehaltsläufen und vom Abruf der Kundenverträge vor jedem Gehaltslauf; eine Anzahl je Abrechnungsmonat nennt das Fallbeispiel nicht. Mit der Lohnbuchhaltung zu bestätigen. | R3.6a |
-| A18 | Auslegung | Die Steuermeldung weist je Mitarbeiter seine Steuer-ID aus (R5.14). Grundlage: KK – das Betriebsfinanzamt führt Mitarbeiter unter der Steuer-ID; dass die Elster-Meldung sie enthält, sagt das Fallbeispiel nicht ausdrücklich. | R5.14 |
+| A18 | Auslegung | Die Steuermeldung weist je Mitarbeiter seine Steuer-ID aus (R5.13). Grundlage: KK – das Betriebsfinanzamt führt Mitarbeiter unter der Steuer-ID; dass die Elster-Meldung sie enthält, sagt das Fallbeispiel nicht ausdrücklich. | R5.13 |
 | A19 | Annahme | Lohnbuchungen zu Steuerpositionen haben als Buchungsdatum den Tag des Gehaltslaufs und entstehen nur für Steuerpositionen über 0 € (R5.1). Grundlage: KK „mit jeder Erstellung einer Gehaltsabrechnung“. Mit der Buchhaltung zu bestätigen. | R5.1 |
 | A20 | Auslegung | Anwender mit der Rolle Lohnbuchhaltung erfassen den Bonussatz (R4.11). Grundlage: RR, Leiter Lohnbuchhaltung, „dass man den Bonus nur einmal im Jahr für alle Manager im System eingeben muss“. | R4.11 |
 | A21 | Auslegung | Die Reihenfolge der Gehaltspositionen folgt dem Rechenweg bei WW (R4.22). | R4.22 |

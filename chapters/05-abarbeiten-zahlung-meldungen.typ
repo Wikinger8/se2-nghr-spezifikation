@@ -26,14 +26,14 @@ _Erläuterung: Das Betriebsfinanzamt zieht die Steuern auf Grundlage der Steuerm
 
 *R5.9* NGHR meldet dem ERP-System alle Lohnbuchungen mit demselben Buchungsdatum gemeinsam in genau einer Meldung an diesem Buchungsdatum. [KK → A11]
 
-*R5.11* Jede Lohnbuchung ist dem ERP-System genau einmal gemeldet. [KK]
+*R5.10* Jede Lohnbuchung ist dem ERP-System genau einmal gemeldet. [KK]
 
 == Steuermeldung an das Betriebsfinanzamt
 
-*R5.12* NGHR sendet für jedes Meldequartal spätestens am 10. Tag nach Quartalsende (10.04., 10.07., 10.10., 10.01.) eine Steuermeldung per Elster an das Betriebsfinanzamt. [KK]
+*R5.11* NGHR sendet für jedes Meldequartal spätestens am 10. Tag nach Quartalsende (10.04., 10.07., 10.10., 10.01.) eine Steuermeldung per Elster an das Betriebsfinanzamt. [KK]
 
-*R5.13* Eine Steuermeldung berücksichtigt jede erstellte Gehaltsabrechnung mit Meldestatus „ungemeldet“, deren Meldequartal abgeschlossen ist, unabhängig vom Zahlungsstatus. [KK → A11]
+*R5.12* Eine Steuermeldung berücksichtigt jede erstellte Gehaltsabrechnung mit Meldestatus „ungemeldet“, deren Meldequartal abgeschlossen ist, unabhängig vom Zahlungsstatus. [KK → A11]
 
-*R5.14* Eine Steuermeldung weist je Mitarbeiter und Meldequartal die Steuer-ID und das Quartalsbruttoeinkommen aus. [KK → A18, O22]
+*R5.13* Eine Steuermeldung weist je Mitarbeiter und Meldequartal die Steuer-ID und das Quartalsbruttoeinkommen aus. [KK → A18, O22]
 
-*R5.15* Sobald eine Steuermeldung gesendet ist, ist der Meldestatus jeder darin berücksichtigten Gehaltsabrechnung „gemeldet“. [KK]
+*R5.14* Sobald eine Steuermeldung gesendet ist, ist der Meldestatus jeder darin berücksichtigten Gehaltsabrechnung „gemeldet“. [KK]
